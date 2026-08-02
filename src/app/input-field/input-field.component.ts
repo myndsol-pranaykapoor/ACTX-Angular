@@ -48,6 +48,7 @@ export class InputFieldComponent implements OnDestroy {
 
   @Output() valueChange = new EventEmitter<string>();
   @Output() actionClick = new EventEmitter<void>();
+  @Output() keyDown = new EventEmitter<KeyboardEvent>();
 
   /** Validation result — overrides the `state` input once the user enters a value */
   private validationState: InputFieldState | null = null;
@@ -80,6 +81,8 @@ export class InputFieldComponent implements OnDestroy {
   }
 
   protected onValueChange(v: string): void { this.applyValue(v); }
+
+  protected onInputKeyDown(event: KeyboardEvent): void { this.keyDown.emit(event); }
 
   @HostBinding('class') get hostClass(): string {
     return `pds-input-field pds-input-field--${this.effectiveState} pds-input-field--type-${this.type}`;

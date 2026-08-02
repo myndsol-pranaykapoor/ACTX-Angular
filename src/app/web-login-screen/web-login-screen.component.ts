@@ -94,4 +94,10 @@ export class WebLoginScreenComponent {
   onKnowledgeCentreClick() {
     this.navigateToSelectModule.emit();
   }
+
+  onPasswordKeyDown(event: KeyboardEvent) {
+    if (event.key === 'Enter' && !this.isLoginDisabled) {
+      this.onLoginClick();
+    }
+  }
 }

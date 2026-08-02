@@ -27,6 +27,7 @@ export class InputAreaComponent {
 
   @Output() valueChange = new EventEmitter<string>();
   @Output() actionClick = new EventEmitter<void>();
+  @Output() keyDown = new EventEmitter<KeyboardEvent>();
 
   onInput(event: Event): void {
     this.value = (event.target as HTMLInputElement | HTMLTextAreaElement).value;
@@ -36,5 +37,9 @@ export class InputAreaComponent {
   onActionClick(event: Event): void {
     event.stopPropagation();                  // don't bubble to the input-area's own click
     if (!this.disabled) this.actionClick.emit();
+  }
+
+  onKeyDown(event: KeyboardEvent): void {
+    this.keyDown.emit(event);
   }
 }
