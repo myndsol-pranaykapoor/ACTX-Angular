@@ -96,7 +96,17 @@ export class WebLoginScreenComponent {
   }
 
   onPasswordKeyDown(event: KeyboardEvent) {
-    if (event.key === 'Enter' && !this.isLoginDisabled) {
+    console.log('Password keydown:', event.key, event.code);
+    if ((event.key === 'Enter' || event.code === 'Enter') && !this.isLoginDisabled) {
+      event.preventDefault();
+      this.onLoginClick();
+    }
+  }
+
+  onUsernameKeyDown(event: KeyboardEvent) {
+    console.log('Username keydown:', event.key, event.code);
+    if ((event.key === 'Enter' || event.code === 'Enter') && !this.isLoginDisabled) {
+      event.preventDefault();
       this.onLoginClick();
     }
   }

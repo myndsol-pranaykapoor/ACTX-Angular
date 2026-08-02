@@ -85,6 +85,7 @@
           [value]="username"
           [supportingMessage]="errorMessage"
           (valueChange)="onUsernameChange($event)"
+          (keyDown)="onUsernameKeyDown($event)"
         ></pds-input-field>
 
         <!-- Password Input with Show/Hide Icon -->
