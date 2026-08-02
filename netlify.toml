@@ -1,6 +1,6 @@
 [build]
   command = "npm run build"
-  publish = "dist/actx-angular"
+  publish = "dist/actx-angular/browser"
   functions = "netlify/functions"
 
 [[redirects]]
