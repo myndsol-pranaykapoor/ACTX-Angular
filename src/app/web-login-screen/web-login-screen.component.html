@@ -1,0 +1,147 @@
+<div class="pds-login-container">
+  <!-- Display Section -->
+  <div class="pds-display-section">
+    <!-- Display Window -->
+    <div class="pds-display-window">
+      <!-- Login Display Content -->
+      <div class="pds-login-display-content">
+        <!-- Logo Display -->
+        <div class="pds-logo-display">
+          <img src="/images/myndx-logo.svg" alt="Mynd Logo" class="pds-logo-display__logo" />
+          <div class="pds-logo-display__spacer"></div>
+          <pds-chip-tag
+            type="border"
+            [size]="1"
+            label="Statutory Compliance"
+            supportingIcon="check-inside-circle"
+            [showSupportingIcon]="true"
+          ></pds-chip-tag>
+        </div>
+
+        <!-- Title Content -->
+        <div class="pds-title-content">
+          <h2 class="pds-title-content__main">Every obligation,<br>tracked & evidenced.</h2>
+          <p class="pds-title-content__subtitle">Every statutory obligation - tracked, evidenced and defensible on any given day.</p>
+        </div>
+
+        <!-- Bullet Points Content -->
+        <div class="pds-bullet-points-content">
+          <div class="pds-bullet-point-row">
+            <svg class="pds-bullet-point-row__icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M17 9L9.5 15L7 11.9091" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span class="pds-bullet-point-row__text">On-time compliance dashboard, entity & location-wise</span>
+          </div>
+          <div class="pds-bullet-point-row">
+            <svg class="pds-bullet-point-row__icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M17 9L9.5 15L7 11.9091" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span class="pds-bullet-point-row__text">Maker-checker governance on every obligation</span>
+          </div>
+          <div class="pds-bullet-point-row">
+            <svg class="pds-bullet-point-row__icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M17 9L9.5 15L7 11.9091" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span class="pds-bullet-point-row__text">Audit-ready evidence, registration & gazette alerts</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Compliance Illustration -->
+      <img src="/images/compliance.svg" alt="Compliance" class="pds-security-shield" />
+
+      <!-- Horizontal Stroke -->
+      <div class="pds-horizontal-stroke"></div>
+    </div>
+  </div>
+
+  <!-- Login Section -->
+  <div class="pds-login-section">
+    <!-- Top Spacer -->
+    <div class="pds-transparent-spacer"></div>
+
+    <!-- Body Section -->
+    <div class="pds-body-section">
+      <!-- Section Header -->
+      <pds-section-header
+        title="Welcome to"
+        subtitle="Login or directly access the knowledge centre."
+        [showTitle]="true"
+        [showSubtitle]="true"
+        logoPath="/images/myndx-logo.svg"
+      ></pds-section-header>
+
+      <!-- Play Area -->
+      <div class="pds-play-area">
+        <!-- Username Input -->
+        <pds-input-field
+          type="field"
+          label="Username"
+          placeholder="Enter your username"
+          [state]="usernameState"
+          [value]="username"
+          [supportingMessage]="errorMessage"
+          (valueChange)="onUsernameChange($event)"
+        ></pds-input-field>
+
+        <!-- Password Input with Show/Hide Icon -->
+        <pds-input-field
+          type="field"
+          label="Password"
+          placeholder="Enter your password"
+          [value]="password"
+          [state]="passwordState"
+          [customTrailingIcon]="passwordVisible ? 'eye-off' : 'eye'"
+          [showHiddenPassword]="!passwordVisible"
+          [supportingMessage]="errorMessage"
+          (valueChange)="onPasswordChange($event)"
+          (actionClick)="onPasswordActionClick()"
+        ></pds-input-field>
+
+        <!-- Size/1 Primary Button -->
+        <pds-button
+          type="primary"
+          [size]="1"
+          content="only-text"
+          label="Login"
+          [disabled]="isLoginDisabled"
+          (click)="onLoginClick()"
+        ></pds-button>
+
+        <!-- Size/0 Tertiary Button -->
+        <pds-button
+          type="tertiary"
+          [size]="0"
+          content="only-text"
+          label="Forgot Password?"
+          (click)="onForgotPasswordClick()"
+        ></pds-button>
+
+        <!-- Separator Line -->
+        <div class="pds-separator-line"></div>
+
+        <!-- Size/1 Secondary Button -->
+        <pds-button
+          type="secondary"
+          [size]="1"
+          content="only-text"
+          label="Knowledge Centre"
+          (click)="onKnowledgeCentreClick()"
+        ></pds-button>
+      </div>
+    </div>
+
+    <!-- Bottom Spacer -->
+    <div class="pds-transparent-spacer"></div>
+
+    <!-- Web Footer -->
+    <pds-web-footer
+      year="2026"
+      companyName="Mynd Solutions"
+      rightsSuffix="All Rights Reserved"
+    ></pds-web-footer>
+  </div>
+</div>

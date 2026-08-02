@@ -1,0 +1,80 @@
+@if (currentScreen() === 'login') {
+  <pds-web-login-screen
+    (navigateToHome)="navigateToHome()"
+    (navigateToSelectModule)="navigateToSelectModule()"
+  ></pds-web-login-screen>
+} @else if (currentScreen() === 'home') {
+  <pds-home-screen
+    (navigateToLogin)="navigateToLogin()"
+    (showUpdatesPopup)="showUpdatesForm()"
+  ></pds-home-screen>
+} @else if (currentScreen() === 'select-module') {
+  <pds-select-module-screen
+    (back)="navigateToLogin()"
+    (navigateToMinimumWages)="navigateToMinimumWages()"
+    (showUpdatesPopup)="showUpdatesForm()"
+  ></pds-select-module-screen>
+} @else if (currentScreen() === 'minimum-wages') {
+  <pds-minimum-wages-screen
+    (back)="navigateToSelectModule()"
+    (navigateToLogin)="navigateToLogin()"
+    (showUpdatesPopup)="showUpdatesForm()"
+  ></pds-minimum-wages-screen>
+}
+
+<!-- Shared Popup Overlay — Never Miss a Beat (shown on all screens) -->
+<pds-popup-layout
+  [visible]="showUpdatesPopup()"
+  [width]="350"
+  [height]="'auto'"
+  [showHeader]="true"
+  [playAreaChrome]="true"
+  (closed)="closeUpdatesForm()"
+>
+  <pds-pop-up-header
+    title="Never Miss a Beat"
+    subtitle="Get updates delivered to your inbox. No more late filings. No more penalties. Just peace of mind."
+    [showSubtitle]="true"
+    [showButton1]="false"
+    [showButton2]="false"
+    [showButton3]="false"
+    [showButton4]="false"
+  ></pds-pop-up-header>
+
+  <!-- Input fields for subscription -->
+  <div class="pds-popup-content">
+    <pds-input-field
+      [type]="'field'"
+      [label]="'Full name'"
+      [placeholder]="'Enter your full name'"
+    ></pds-input-field>
+    <pds-input-field
+      [type]="'field'"
+      [label]="'E-mail ID'"
+      [placeholder]="'Enter your email ID'"
+    ></pds-input-field>
+  </div>
+
+  <!-- Footer with action buttons -->
+  <pds-pop-up-footer
+    [showButton1]="true"
+    button1Label="Subscribe"
+    (button1Click)="showSuccessMessage()"
+    [showButton2]="true"
+    button2Label="Close"
+    (button2Click)="closeUpdatesForm()"
+    [showButton3]="false"
+    [showButton4]="false"
+  ></pds-pop-up-footer>
+</pds-popup-layout>
+
+<!-- Shared Success Semantic Popup -->
+<pds-semantic-popup
+  [visible]="showSuccessPopup()"
+  type="success"
+  title="Subscription Successful"
+  subtitle="Thank you for subscribing! You will receive updates in your inbox."
+  confirmLabel="Okay"
+  [cancelLabel]="''"
+  (closed)="closeSuccessMessage()"
+></pds-semantic-popup>

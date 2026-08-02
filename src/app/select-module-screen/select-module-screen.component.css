@@ -1,0 +1,271 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100%;
+}
+
+/* Fixed header and command bar */
+pds-web-header {
+  flex-shrink: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 200;
+}
+
+/* Hide notification button and user-info in select-module screen */
+.pds-web-header > pds-button {
+  display: none !important;
+}
+
+.pds-web-header__user-info {
+  display: none !important;
+}
+
+pds-command-bar {
+  flex-shrink: 0;
+  position: fixed;
+  top: 42px;
+  left: 0;
+  right: 0;
+  z-index: 199;
+}
+
+/* Override command-bar's default 56px left padding (for sidebar) since select-module has no sidebar */
+.pds-command-bar {
+  padding-left: 0 !important;
+}
+
+/* Hide search component in command-bar for select-module screen */
+.pds-command-bar__container pds-search {
+  display: none !important;
+}
+
+/* Main scrollable content area — positioned below fixed headers */
+.pds-select-module-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin-top: 84px;  /* 42px header + 42px command-bar */
+  min-height: calc(100vh - 84px);  /* Stretch to bottom edge of screen */
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 12px;      /* Spacing/6 */
+  gap: 12px;          /* Spacing/6 between sections */
+  background-color: var(--pds-primary-0);
+  min-width: 0;       /* Allow flex item to shrink below content intrinsic width */
+}
+
+/* Page Header */
+.pds-page-header {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;           /* Spacing/2 */
+  margin-bottom: 8px; /* Spacing/4 */
+}
+
+.pds-page-title {
+  margin: 0;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 28px;
+  line-height: 34px;
+  font-weight: 500;
+  color: #262626;
+}
+
+.pds-page-subtitle {
+  margin: 0;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 400;
+  color: #8c8c8c;
+}
+
+/* Section Row — Container for horizontal section layout */
+.pds-section-row {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;          /* Spacing/6 */
+  min-width: 0;       /* Allow flex container to shrink below content intrinsic width */
+}
+
+/* Body Sections — Card-like containers */
+.pds-section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;          /* Spacing/6 */
+  padding: 12px;      /* Spacing/6 */
+  background: #ffffff;                /* Grey/0 */
+  border: 1px solid #e4e4e4;          /* Grey/3 */
+  border-radius: 12px;                /* Radius/6 */
+  min-width: 0;       /* Allow flex item to shrink below content intrinsic width */
+}
+
+/* Override flex for sections inside section-row */
+.pds-section-row .pds-section {
+  flex: 1;            /* Each section takes equal width */
+}
+
+/* Play Area — Inside each section */
+.play-area {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;          /* Spacing/6 */
+  padding: 12px;      /* Spacing/6 */
+  background: #fcfcfc;                /* Grey/1 */
+  border: 1px solid #e8e8e8;
+  border-radius: 8px;
+  min-width: 0;
+}
+
+/* Token Group */
+.pds-token-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;           /* Spacing/2 */
+  margin-bottom: 0;
+}
+
+.pds-token-label {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 12px;
+  line-height: 18px;
+  font-weight: 500;
+  color: #9d9d9d;     /* Grey/5 */
+  margin-bottom: 4px; /* Spacing/2 */
+}
+
+.pds-row {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;          /* Spacing/6 */
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+/* Transparent Spacer — fills remaining space to push footer to bottom */
+.pds-transparent-spacer {
+  flex: 1;
+}
+
+pds-web-footer {
+  flex-shrink: 0;
+}
+
+/* Center section-header vertically and horizontally inside first body-section */
+.pds-section-row .pds-section:first-child {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+pds-section-header {
+  width: 100%;
+}
+
+/* Center align title and subtitle for first body-section only */
+.pds-section-row .pds-section:first-child .pds-section-header__main-row {
+  height: auto;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+/* Hide spacers in main-row for all sections with illustrations */
+.pds-section-row .pds-section:first-child .pds-section-header__spacer,
+.pds-section-row .pds-section:nth-child(2) .pds-section-header__spacer,
+.pds-section-row .pds-section:nth-child(3) .pds-section-header__spacer,
+.pds-section-row .pds-section:nth-child(4) .pds-section-header__spacer {
+  display: none !important;
+}
+
+/* Make icon-title fill width for sections 2, 3, and 4 */
+.pds-section-row .pds-section:nth-child(2) .pds-section-header__icon-title,
+.pds-section-row .pds-section:nth-child(3) .pds-section-header__icon-title,
+.pds-section-row .pds-section:nth-child(4) .pds-section-header__icon-title {
+  flex: 1;
+  display: flex !important;
+  flex-shrink: 0;
+  min-width: 0;
+}
+
+/* Make title text fill width and truncate on narrow screens */
+.pds-section-row .pds-section:nth-child(2) .pds-section-header__title,
+.pds-section-row .pds-section:nth-child(3) .pds-section-header__title,
+.pds-section-row .pds-section:nth-child(4) .pds-section-header__title {
+  width: 100%;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+/* Allow multi-line subtitle for second body-section */
+.pds-section-row .pds-section:nth-child(2) .pds-section-header__subtitle {
+  height: auto !important;
+  white-space: pre-wrap !important;
+  overflow: visible !important;
+  text-overflow: clip !important;
+  word-wrap: break-word !important;
+}
+
+/* Allow multi-line subtitle for third body-section */
+.pds-section-row .pds-section:nth-child(3) .pds-section-header__subtitle {
+  height: auto !important;
+  white-space: pre-wrap !important;
+  overflow: visible !important;
+  text-overflow: clip !important;
+  word-wrap: break-word !important;
+}
+
+/* Allow multi-line subtitle for fourth body-section */
+.pds-section-row .pds-section:nth-child(4) .pds-section-header__subtitle {
+  height: auto !important;
+  white-space: pre-wrap !important;
+  overflow: visible !important;
+  text-overflow: clip !important;
+  word-wrap: break-word !important;
+}
+
+/* Play area illustration styling */
+.play-area__illustration {
+  max-width: 200px;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  object-position: center;
+  margin: 0 auto;
+}
+
+/* Remove background fill from play-area while keeping border */
+.play-area {
+  background-color: transparent !important;
+}
+
+.pds-section-row .pds-section:first-child .pds-section-header__icon-title {
+  width: 100%;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex-shrink: 1 !important;
+}
+
+.pds-section-row .pds-section:first-child .pds-section-header__title {
+  width: 100%;
+  text-align: center;
+  white-space: normal;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.pds-section-row .pds-section:first-child .pds-section-header__subtitle {
+  width: 100%;
+  text-align: center;
+  height: auto;
+  white-space: normal;
+  overflow: visible;
+  text-overflow: clip;
+}

@@ -1,0 +1,115 @@
+<!-- Web Header — fixed at top -->
+<pds-web-header
+  logoSrc="/images/myndx-logo.svg"
+  logoAlt="Mynd Logo"
+  [notificationCount]="0"
+  userAvatarSrc=""
+  userName="User"
+  userDesignation="Administrator"
+></pds-web-header>
+
+<!-- Command Bar — fixed below web-header -->
+<pds-command-bar
+  title="Select Module"
+  (back)="onBackClick()"
+  [showSecondary]="true"
+  secondaryLabel="Get Regular Updates"
+  [showPrimary]="true"
+  primaryLabel="Login"
+  primaryIcon="log-in"
+  (secondaryClick)="onCommandBarSecondaryClick()"
+  (primaryClick)="onCommandBarPrimaryClick()"
+></pds-command-bar>
+
+<!-- Main scrollable content area -->
+<main class="pds-select-module-main">
+
+  <!-- Body Section Row — Modules 1-4 displayed horizontally -->
+  <div class="pds-section-row">
+
+    <!-- Module 1 Section -->
+    <section class="pds-section">
+      <pds-section-header
+        title="Start Your Journey by Selecting Desired Module"
+        subtitle="Choose a module to get started with compliance tracking, document access, or wage information."
+        [showSubtitle]="true"
+        [showIcon]="false"
+        [showButton1]="false"
+        [showButton2]="false"
+        [showButton3]="false"
+        [showButton4]="false"
+      />
+    </section>
+
+    <!-- Module 2 Section -->
+    <section class="pds-section">
+      <pds-section-header
+        title="E-Library"
+        [subtitle]="'• Acts & Rules\n• Notifications & Circulars\n• Downloadable Documents'"
+        [showSubtitle]="true"
+        [showIcon]="true"
+        icon="file"
+        [showButton1]="true"
+        button1Type="secondary"
+        button1Icon="external-link"
+        [showButton2]="false"
+        [showButton3]="false"
+        [showButton4]="false"
+      />
+      <div class="play-area">
+        <img src="/illustrations/business-folder.svg" alt="Business Folder" class="play-area__illustration" />
+      </div>
+    </section>
+
+    <!-- Module 3 Section -->
+    <section class="pds-section">
+      <pds-section-header
+        title="Compliance Calendar"
+        [subtitle]="'• Upcoming & Overdue\n• Filing Details\n• Related Regulations'"
+        [showSubtitle]="true"
+        [showIcon]="true"
+        icon="calendar"
+        [showButton1]="true"
+        button1Type="secondary"
+        button1Icon="external-link"
+        [showButton2]="false"
+        [showButton3]="false"
+        [showButton4]="false"
+      />
+      <div class="play-area">
+        <img src="/illustrations/task-planning.svg" alt="Task Planning" class="play-area__illustration" />
+      </div>
+    </section>
+
+    <!-- Module 4 Section -->
+    <section class="pds-section">
+      <pds-section-header
+        title="Minimum Wages"
+        [subtitle]="'• Basic Wage & VDA\n• State & Zone Filters\n• Revision History'"
+        [showSubtitle]="true"
+        [showIcon]="true"
+        icon="rupee"
+        [showButton1]="true"
+        button1Type="secondary"
+        button1Icon="external-link"
+        [showButton2]="false"
+        [showButton3]="false"
+        [showButton4]="false"
+        (button1Click)="onMinimumWagesClick()"
+      />
+      <div class="play-area">
+        <img src="/illustrations/calculate.svg" alt="Calculate" class="play-area__illustration" />
+      </div>
+    </section>
+
+  </div>
+
+  <!-- Transparent Spacer — pushes web-footer to the bottom -->
+  <div class="pds-transparent-spacer"></div>
+
+  <!-- Web Footer — placed at the bottom, scrolls with content -->
+  <pds-web-footer
+    (action1Click)="onFooterAction1()"
+    (action2Click)="onFooterAction2()"
+  ></pds-web-footer>
+</main>

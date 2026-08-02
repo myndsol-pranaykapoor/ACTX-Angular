@@ -1,0 +1,296 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* ============================================================
+   PDS Primary Colour Themes
+   Seven products share the design system; each swaps the
+   --pds-primary-0..5 custom properties. Set the active theme
+   with  data-pds-theme="<product>"  on <html> (or any ancestor).
+   Default (no attribute) = ACT.
+   ============================================================ */
+
+:root,
+[data-pds-theme="act"] {
+  /* ACT Primary Colours */
+  --pds-primary-0: #f6fcf9;
+  --pds-primary-1: #b0e6ce;
+  --pds-primary-2: #54c895;
+  --pds-primary-3: #00ad61;
+  --pds-primary-4: #007b45;
+  --pds-primary-5: #004929;
+
+  /* Grey Scale */
+  --pds-grey-0: #ffffff;
+  --pds-grey-1: #fcfcfc;
+  --pds-grey-2: #efefef;
+  --pds-grey-3: #e4e4e4;
+  --pds-grey-4: #c9c9c9;
+  --pds-grey-5: #9d9d9d;
+  --pds-grey-6: #5d5d5d;
+  --pds-grey-7: #3f3f3f;
+  --pds-grey-8: #262626;
+  --pds-grey-9: #000000;
+
+  /* Semantic Colours */
+  --pds-semantic-success: #51b389;
+  --pds-semantic-error: #f44336;
+  --pds-semantic-warning: #ff9800;
+
+  /* Secondary Colours */
+  --pds-secondary-0: #f4f5f8;
+  --pds-secondary-1: #bcc2d4;
+  --pds-secondary-2: #6e7ca2;
+  --pds-secondary-3: #263b74;
+  --pds-secondary-4: #1b2a52;
+  --pds-secondary-5: #101931;
+}
+
+[data-pds-theme="hrx"] {
+  --pds-primary-0: #fdf8f7;
+  --pds-primary-1: #f7d4d1;
+  --pds-primary-2: #eea39b;
+  --pds-primary-3: #e5756a;
+  --pds-primary-4: #a3534b;
+  --pds-primary-5: #60312d;
+
+  --pds-grey-0: #ffffff;
+  --pds-grey-1: #fcfcfc;
+  --pds-grey-2: #efefef;
+  --pds-grey-3: #e4e4e4;
+  --pds-grey-4: #c9c9c9;
+  --pds-grey-5: #9d9d9d;
+  --pds-grey-6: #5d5d5d;
+  --pds-grey-7: #3f3f3f;
+  --pds-grey-8: #262626;
+  --pds-grey-9: #000000;
+
+  --pds-semantic-success: #51b389;
+  --pds-semantic-error: #f44336;
+  --pds-semantic-warning: #ff9800;
+
+  --pds-secondary-0: #f4f5f8;
+  --pds-secondary-1: #bcc2d4;
+  --pds-secondary-2: #6e7ca2;
+  --pds-secondary-3: #263b74;
+  --pds-secondary-4: #1b2a52;
+  --pds-secondary-5: #101931;
+}
+
+[data-pds-theme="talkx"] {
+  --pds-primary-0: #fbfaf3;
+  --pds-primary-1: #e5e1b9;
+  --pds-primary-2: #c7bf67;
+  --pds-primary-3: #ac9f1c;
+  --pds-primary-4: #7a7114;
+  --pds-primary-5: #48430c;
+
+  --pds-grey-0: #ffffff;
+  --pds-grey-1: #fcfcfc;
+  --pds-grey-2: #efefef;
+  --pds-grey-3: #e4e4e4;
+  --pds-grey-4: #c9c9c9;
+  --pds-grey-5: #9d9d9d;
+  --pds-grey-6: #5d5d5d;
+  --pds-grey-7: #3f3f3f;
+  --pds-grey-8: #262626;
+  --pds-grey-9: #000000;
+
+  --pds-semantic-success: #51b389;
+  --pds-semantic-error: #f44336;
+  --pds-semantic-warning: #ff9800;
+
+  --pds-secondary-0: #f4f5f8;
+  --pds-secondary-1: #bcc2d4;
+  --pds-secondary-2: #6e7ca2;
+  --pds-secondary-3: #263b74;
+  --pds-secondary-4: #1b2a52;
+  --pds-secondary-5: #101931;
+}
+
+[data-pds-theme="leasex"] {
+  --pds-primary-0: #fffcf6;
+  --pds-primary-1: #fbecc7;
+  --pds-primary-2: #f7d586;
+  --pds-primary-3: #f3c14a;
+  --pds-primary-4: #ad8935;
+  --pds-primary-5: #66511f;
+
+  --pds-grey-0: #ffffff;
+  --pds-grey-1: #fcfcfc;
+  --pds-grey-2: #efefef;
+  --pds-grey-3: #e4e4e4;
+  --pds-grey-4: #c9c9c9;
+  --pds-grey-5: #9d9d9d;
+  --pds-grey-6: #5d5d5d;
+  --pds-grey-7: #3f3f3f;
+  --pds-grey-8: #262626;
+  --pds-grey-9: #000000;
+
+  --pds-semantic-success: #51b389;
+  --pds-semantic-error: #f44336;
+  --pds-semantic-warning: #ff9800;
+
+  --pds-secondary-0: #f4f5f8;
+  --pds-secondary-1: #bcc2d4;
+  --pds-secondary-2: #6e7ca2;
+  --pds-secondary-3: #263b74;
+  --pds-secondary-4: #1b2a52;
+  --pds-secondary-5: #101931;
+}
+
+[data-pds-theme="travelx"] {
+  --pds-primary-0: #f9f8ff;
+  --pds-primary-1: #ded6fe;
+  --pds-primary-2: #b8a7fd;
+  --pds-primary-3: #957cfc;
+  --pds-primary-4: #6a58b3;
+  --pds-primary-5: #3f346a;
+
+  --pds-grey-0: #ffffff;
+  --pds-grey-1: #fcfcfc;
+  --pds-grey-2: #efefef;
+  --pds-grey-3: #e4e4e4;
+  --pds-grey-4: #c9c9c9;
+  --pds-grey-5: #9d9d9d;
+  --pds-grey-6: #5d5d5d;
+  --pds-grey-7: #3f3f3f;
+  --pds-grey-8: #262626;
+  --pds-grey-9: #000000;
+
+  --pds-semantic-success: #51b389;
+  --pds-semantic-error: #f44336;
+  --pds-semantic-warning: #ff9800;
+
+  --pds-secondary-0: #f4f5f8;
+  --pds-secondary-1: #bcc2d4;
+  --pds-secondary-2: #6e7ca2;
+  --pds-secondary-3: #263b74;
+  --pds-secondary-4: #1b2a52;
+  --pds-secondary-5: #101931;
+}
+
+[data-pds-theme="spendx"] {
+  --pds-primary-0: #f3fcfb;
+  --pds-primary-1: #b5ebe6;
+  --pds-primary-2: #5fd3c8;
+  --pds-primary-3: #10bead;
+  --pds-primary-4: #0b877b;
+  --pds-primary-5: #075049;
+
+  --pds-grey-0: #ffffff;
+  --pds-grey-1: #fcfcfc;
+  --pds-grey-2: #efefef;
+  --pds-grey-3: #e4e4e4;
+  --pds-grey-4: #c9c9c9;
+  --pds-grey-5: #9d9d9d;
+  --pds-grey-6: #5d5d5d;
+  --pds-grey-7: #3f3f3f;
+  --pds-grey-8: #262626;
+  --pds-grey-9: #000000;
+
+  --pds-semantic-success: #51b389;
+  --pds-semantic-error: #f44336;
+  --pds-semantic-warning: #ff9800;
+
+  --pds-secondary-0: #f4f5f8;
+  --pds-secondary-1: #bcc2d4;
+  --pds-secondary-2: #6e7ca2;
+  --pds-secondary-3: #263b74;
+  --pds-secondary-4: #1b2a52;
+  --pds-secondary-5: #101931;
+}
+
+[data-pds-theme="apx"] {
+  --pds-primary-0: #f7f9f6;
+  --pds-primary-1: #cbdbc6;
+  --pds-primary-2: #8eb283;
+  --pds-primary-3: #578c46;
+  --pds-primary-4: #3e6332;
+  --pds-primary-5: #253b1d;
+
+  --pds-grey-0: #ffffff;
+  --pds-grey-1: #fcfcfc;
+  --pds-grey-2: #efefef;
+  --pds-grey-3: #e4e4e4;
+  --pds-grey-4: #c9c9c9;
+  --pds-grey-5: #9d9d9d;
+  --pds-grey-6: #5d5d5d;
+  --pds-grey-7: #3f3f3f;
+  --pds-grey-8: #262626;
+  --pds-grey-9: #000000;
+
+  --pds-semantic-success: #51b389;
+  --pds-semantic-error: #f44336;
+  --pds-semantic-warning: #ff9800;
+
+  --pds-secondary-0: #f4f5f8;
+  --pds-secondary-1: #bcc2d4;
+  --pds-secondary-2: #6e7ca2;
+  --pds-secondary-3: #263b74;
+  --pds-secondary-4: #1b2a52;
+  --pds-secondary-5: #101931;
+}
+
+/* ============================================================
+   Spacing Tokens (from Design System)
+   ============================================================ */
+:root {
+  --spacing-0: 0px;
+  --spacing-1: 2px;
+  --spacing-2: 4px;
+  --spacing-3: 6px;
+  --spacing-4: 8px;
+  --spacing-5: 10px;
+  --spacing-6: 12px; /* Golden Standard */
+  --spacing-7: 14px;
+  --spacing-8: 16px;
+  --spacing-9: 18px;
+  --spacing-10: 20px;
+  --spacing-11: 22px;
+  --spacing-12: 24px;
+  --spacing-13: 26px;
+  --spacing-14: 28px;
+  --spacing-15: 30px;
+  --spacing-16: 32px;
+  --spacing-17: 34px;
+  --spacing-18: 36px;
+  --spacing-19: 38px;
+  --spacing-20: 40px;
+  --spacing-21: 42px;
+  --spacing-22: 44px;
+  --spacing-23: 46px;
+  --spacing-24: 48px;
+
+  /* Border Radius Tokens */
+  --radius-1: 2px;
+  --radius-2: 4px;
+  --radius-3: 6px;
+  --radius-4: 8px;
+  --radius-5: 10px;
+  --radius-6: 12px; /* Level 1 - Outermost */
+  --radius-7: 14px;
+  --radius-8: 16px;
+  --radius-9: 18px;
+  --radius-10: 20px;
+  --radius-11: 22px;
+  --radius-12: 24px;
+  --radius-13: 26px;
+  --radius-14: 28px;
+  --radius-full: 9999px;
+
+  /* Elevation Tokens */
+  --elevation-1: 0px 1px 2px rgba(0,0,0,0.08), 0px 1px 3px -1px rgba(0,0,0,0.05);
+  --elevation-2: 0px 2px 4px rgba(0,0,0,0.10), 0px 2px 6px -1px rgba(0,0,0,0.06);
+  --elevation-3: 0px 4px 6px rgba(0,0,0,0.12), 0px 4px 8px -1px rgba(0,0,0,0.08);
+  --elevation-4: 0px 6px 8px rgba(0,0,0,0.14), 0px 6px 10px -1px rgba(0,0,0,0.10);
+  --elevation-5: 0px 8px 10px rgba(0,0,0,0.16), 0px 8px 12px -1px rgba(0,0,0,0.12);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+}

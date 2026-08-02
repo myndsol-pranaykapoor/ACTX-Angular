@@ -1,0 +1,23 @@
+/* PDS Pop-up Footer — Tokens: Layout · Button Slots · Typography */
+
+.pds-pop-up-footer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  height: 32px;
+  padding: 4px 0;       /* Spacing/2 top & bottom */
+  gap: 12px;            /* Spacing/6 */
+  box-sizing: border-box;
+}
+
+.pds-pop-up-footer__spacer {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+/* Buttons hug content width */
+.pds-pop-up-footer .pds-button {
+  width: auto;
+  min-width: auto;
+}

@@ -1,0 +1,19 @@
+<pds-popup-layout [visible]="visible" [width]="350" [height]="'auto'" (closed)="onCancel()">
+  <pds-pop-up-header
+    [title]="resolvedTitle" [titleColor]="config.iconColor"
+    [subtitle]="resolvedSubtitle" [showSubtitle]="true"
+    [showIcon]="true" [icon]="config.icon" [iconColor]="config.iconColor"
+    [showButton1]="false" [showButton2]="false" [showButton3]="false" [showButton4]="false"
+  />
+  <div class="pds-semantic-popup__illustration">
+    <img [src]="'/illustrations/' + config.illustration + '.svg'" [alt]="type" width="200" height="200" />
+  </div>
+  <pds-pop-up-footer
+    [showButton1]="true"
+    [button1Label]="confirmLabel"
+    (button1Click)="onConfirm()"
+    [showButton2]="false"
+    [showButton3]="false"
+    [showButton4]="false"
+  />
+</pds-popup-layout>

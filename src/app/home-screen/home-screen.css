@@ -1,0 +1,395 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100%;
+}
+
+/* Fixed header and command bar */
+pds-web-header {
+  flex-shrink: 0;
+  position: fixed;
+  top: 0;
+  left: 56px;
+  right: 0;
+  z-index: 200;
+}
+
+pds-command-bar {
+  flex-shrink: 0;
+  position: fixed;
+  top: 42px;
+  left: 56px;
+  right: 0;
+  z-index: 199;
+}
+
+/* Hide search component in command-bar */
+.pds-command-bar__container pds-search {
+  display: none !important;
+}
+
+/* Main scrollable content area — positioned below fixed headers and after side-menu */
+.pds-select-module-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin-top: 84px;  /* 42px header + 42px command-bar */
+  margin-left: 56px; /* Account for fixed side-menu width */
+  min-height: calc(100vh - 84px);  /* Stretch to bottom edge of screen */
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 12px;      /* Spacing/6 */
+  gap: 12px;          /* Spacing/6 between sections */
+  background-color: var(--pds-primary-0);
+  min-width: 0;       /* Allow flex item to shrink below content intrinsic width */
+}
+
+/* Section Row — Container for horizontal section layout */
+.pds-section-row {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;          /* Spacing/6 */
+  min-width: 0;       /* Allow flex container to shrink below content intrinsic width */
+}
+
+/* Body Sections — Card-like containers */
+.pds-section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;          /* Spacing/6 */
+  padding: 12px;      /* Spacing/6 */
+  background: #ffffff;                /* Grey/0 */
+  border: 1px solid #e4e4e4;          /* Grey/3 */
+  border-radius: 12px;                /* Radius/6 */
+  min-width: 0;       /* Allow flex item to shrink below content intrinsic width */
+  flex: 1;            /* Equal width distribution */
+}
+
+/* Transparent Spacer — fills remaining space to push footer to bottom */
+.pds-transparent-spacer {
+  flex: 1;
+}
+
+pds-web-footer {
+  flex-shrink: 0;
+}
+
+/* Make icon-title fill width for all sections */
+.pds-section-row .pds-section .pds-section-header__icon-title {
+  flex: 1;
+  display: flex !important;
+  flex-shrink: 0;
+  min-width: 0;
+}
+
+/* Make title text fill width and truncate on narrow screens */
+.pds-section-row .pds-section .pds-section-header__title {
+  width: 100%;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+/* Hide spacers in main-row for section-header in section-row only (not for top-level sections like Important Updates) */
+.pds-section-row .pds-section .pds-section-header__spacer {
+  display: none !important;
+}
+
+/* Show spacer-1 and hide spacer-2 in pop-up-header for sections in section-row to push button right */
+.pds-section-row .pds-section pds-pop-up-header .pds-pop-up-header__main-row .pds-pop-up-header__spacer:nth-of-type(2) {
+  display: none !important;
+}
+
+/* Hide supporting icon in all body-sections by default */
+.pds-section .pds-section-header__icon {
+  display: none !important;
+}
+
+/* Show supporting icon only for sections with pds-section--show-icon class */
+.pds-section--show-icon .pds-section-header__icon {
+  display: block !important;
+}
+
+/* Auto-height section that hugs inner elements */
+.pds-section--auto-height {
+  height: auto !important;
+  flex: 0 0 auto !important;
+}
+
+/* Hide spacer-2 (second spacer) in Important Updates section header */
+.pds-section--auto-height .pds-section-header__main-row .pds-section-header__spacer:nth-of-type(2) {
+  display: none !important;
+}
+
+/* Hide spacer-2 in section-header main-row for sections with buttonSpacing to push button right */
+.pds-select-module-main > .pds-section .pds-section-header__main-row .pds-section-header__spacer:nth-of-type(2) {
+  display: none !important;
+}
+
+/* Play Area Styling */
+.play-area {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 12px;
+  background: #fcfcfc;
+  border: 1px solid #e8e8e8;
+  border-radius: 8px;
+  height: auto;
+}
+
+/* Play Area with Fixed Height */
+.play-area--fixed-height {
+  height: 200px !important;
+}
+
+/* Set table component total height to 200px */
+pds-table {
+  height: 200px !important;
+}
+
+/* Make table grid fill the parent table's available height */
+.pds-table__grid {
+  height: 100% !important;
+}
+
+
+/* Play Area in Important Updates with semantic-alert border and background */
+.pds-section--auto-height .play-area {
+  border-color: #ff9800;
+  background-color: #FFFBF3;
+}
+
+/* Updates Carousel Styling */
+.updates-carousel__container {
+  position: relative;
+  overflow: hidden;
+  min-height: 60px;
+  width: 100%;
+}
+
+.updates-carousel__slide {
+  position: absolute;
+  width: 100%;
+  opacity: 0;
+  transition: none;
+}
+
+.updates-carousel__slide--active {
+  animation: slideInFromRight 0.6s ease-in-out forwards;
+  opacity: 1;
+}
+
+.updates-carousel__slide--exit-left {
+  animation: slideOutToLeft 0.6s ease-in-out forwards;
+}
+
+.updates-carousel__slide--exit-right {
+  animation: slideOutToRight 0.6s ease-in-out forwards;
+}
+
+.updates-carousel__slide--enter-left {
+  animation: slideInFromLeft 0.6s ease-in-out forwards;
+  opacity: 1;
+}
+
+.updates-carousel__slide--enter-right {
+  animation: slideInFromRight 0.6s ease-in-out forwards;
+  opacity: 1;
+}
+
+@keyframes slideOutToLeft {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+}
+
+@keyframes slideInFromRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideOutToRight {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+@keyframes slideInFromLeft {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.updates-carousel__title-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.updates-carousel__title {
+  font-size: 16px;            /* Heading/2 */
+  line-height: 22px;
+  font-weight: 600;           /* SemiBold */
+  color: #262626;
+  margin: 0;
+  flex: 1;
+}
+
+.updates-carousel__title-row pds-chip-tag {
+  flex-shrink: 0;
+}
+
+.updates-carousel__description {
+  font-size: 12px;            /* Body/2 */
+  line-height: 18px;
+  font-weight: 400;           /* Regular */
+  color: #5d5d5d;
+  margin: 0;
+}
+
+.updates-carousel__indicators {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+.indicator {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #e4e4e4;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.indicator--active {
+  background-color: var(--pds-primary-3);
+}
+
+/* Home Content Styling */
+.home-content {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 12px;
+  background: #fcfcfc;
+  border: 1px solid #e8e8e8;
+  border-radius: 8px;
+}
+
+.home-content p {
+  font-size: 14px;
+  line-height: 20px;
+  color: #5d5d5d;
+  margin: 0;
+}
+
+.feature-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.feature-list li {
+  font-size: 14px;
+  line-height: 20px;
+  color: #5d5d5d;
+  padding-left: 24px;
+  position: relative;
+}
+
+.feature-list li:before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: var(--pds-primary-3);
+  font-weight: 600;
+}
+
+/* Quick Links Styling */
+.quick-links {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.quick-link-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 16px 12px;
+  background: #fcfcfc;
+  border: 1px solid #e8e8e8;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.quick-link-item:hover {
+  background: #f4f5f8;
+  border-color: var(--pds-primary-3);
+}
+
+.link-icon {
+  font-size: 28px;
+  display: block;
+}
+
+.link-label {
+  font-size: 12px;
+  font-weight: 500;
+  color: #5d5d5d;
+  text-align: center;
+  line-height: 16px;
+}
+
+/* Heading/4 text style */
+.heading-4 {
+  font-size: 24px;            /* Heading/4 */
+  line-height: 30px;
+  font-weight: 600;           /* SemiBold */
+  color: #262626;
+  margin: 0;
+}
+
+/* Chip Tags Container — horizontal alignment with spacing/6 gap */
+.chip-tags-container {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;                  /* Spacing/6 */
+}
+
+/* TBD Section — Replace action icon with chevron-right */
+.pds-select-module-main .pds-section-row:first-child .pds-section:nth-child(4) .chip-tags-container pds-chip-tag .pds-chip-tag__action-icon {
+  mask-image: url('/icons/12px/chevron-right.svg') !important;
+  -webkit-mask-image: url('/icons/12px/chevron-right.svg') !important;
+}

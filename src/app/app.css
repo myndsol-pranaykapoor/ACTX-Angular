@@ -1,0 +1,523 @@
+* { margin: 0; padding: 0; }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* ─── Theme switcher — fixed bottom-right · collapsible with smooth animation ─── */
+.ds-theme-switcher {
+  position: fixed;
+  bottom: 66px;                       /* 16px base + 50px lift */
+  right: 16px;
+  z-index: 500;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 8px;
+  background: #ffffff;
+  border: 1px solid #e4e4e4;          /* Grey/3 */
+  border-radius: 10px;
+  box-shadow: 0 4px 8px -1px rgba(0, 0, 0, 0.12), 0 4px 6px rgba(0, 0, 0, 0.08);
+  font-family: 'IBM Plex Sans', sans-serif;
+  /* container gap shrinks when list is hidden so head sits flush */
+  transition: gap 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.ds-theme-switcher--collapsed {
+  gap: 0;
+}
+
+/* ── Collapsible header (always visible) — click to expand/collapse ── */
+.ds-theme-switcher__head {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 2px 4px;
+  background: transparent;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: inherit;
+}
+.ds-theme-switcher__head:hover {
+  background: #f4f5f8;                /* Secondary/0 */
+}
+
+.ds-theme-switcher__label {
+  font-size: 11px;
+  font-weight: 500;
+  color: #9d9d9d;                     /* Grey/5 */
+}
+
+/* Active-theme chip — quick read when collapsed · animates away when expanded */
+.ds-theme-switcher__active-chip {
+  font-family: inherit;
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  color: #ffffff;
+  background: var(--pds-primary-3);   /* live preview of the active theme */
+  border-radius: 6px;
+  padding: 3px 8px;
+  max-width: 120px;
+  opacity: 1;
+  overflow: hidden;
+  white-space: nowrap;
+  transition:
+    max-width   0.28s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity     0.18s ease,
+    padding     0.25s cubic-bezier(0.4, 0, 0.2, 1),
+    margin      0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Chevron — 16px masked SVG · swapped between chevron-left / chevron-right by template */
+.ds-theme-switcher__chevron {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  background-color: #9d9d9d;          /* Grey/5 */
+  mask-image: var(--chevron-url);
+  mask-size: contain;
+  mask-repeat: no-repeat;
+  mask-position: center;
+  -webkit-mask-image: var(--chevron-url);
+  -webkit-mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  transition: background-color 0.15s ease;
+}
+.ds-theme-switcher__head:hover .ds-theme-switcher__chevron {
+  background-color: #5d5d5d;          /* Grey/6 */
+}
+
+/* When expanded the active-chip is redundant — animate it out smoothly */
+.ds-theme-switcher:not(.ds-theme-switcher--collapsed) .ds-theme-switcher__active-chip {
+  max-width: 0;
+  opacity: 0;
+  padding-left: 0;
+  padding-right: 0;
+  margin-left: -6px;                  /* swallow the head-gap left by the gone chip */
+}
+
+/* ── Theme-button list — animates open via max-width ── */
+.ds-theme-switcher__list {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  max-width: 600px;                   /* fits all 7 theme buttons */
+  opacity: 1;
+  overflow: hidden;
+  transition:
+    max-width   0.32s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity     0.22s ease 0.04s;
+}
+
+/* Collapsed: list shrinks to 0 width · fades out · clicks blocked */
+.ds-theme-switcher--collapsed .ds-theme-switcher__list {
+  max-width: 0;
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    max-width   0.28s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity     0.16s ease;           /* fade out faster than fade in */
+}
+
+.ds-theme-switcher__btn {
+  font-family: inherit;
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  color: #5d5d5d;                     /* Grey/6 */
+  background: #f4f5f8;                /* Secondary/0 */
+  border: 1px solid transparent;
+  border-radius: 6px;
+  padding: 4px 8px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+.ds-theme-switcher__btn:hover {
+  border-color: var(--pds-primary-3);
+}
+.ds-theme-switcher__btn--active {
+  color: #ffffff;
+  background: var(--pds-primary-3);   /* live preview of the active theme */
+  border-color: var(--pds-primary-3);
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100vh;
+}
+
+app-root {
+  display: block;
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* The fixed-position layout components are inline custom elements by default;
+   without this, their inline line-height pushes .ds-main ~17px below where it should sit. */
+pds-side-menu,
+pds-web-header,
+pds-command-bar {
+  display: contents;
+}
+
+body {
+  font-family: 'IBM Plex Sans', sans-serif;
+  background: var(--pds-primary-0);             /* Primary/0 */
+  color: #262626;
+}
+
+/* ── PREVIEW SHELL — fixed-positioned to viewport, grid pins .ds-main precisely ── */
+/* position:fixed + inset:0 → .ds-preview is exactly 100vw × 100vh, pinned to top-left */
+/* Grid: col 1 (56px) = side-menu zone · row 1 (126px) = web-header (42) + command-bar (42) + top-nav-bar (42) zone */
+.ds-preview {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  grid-template-rows: 126px 1fr;
+  background: var(--pds-primary-0);             /* Primary/0 */
+  overflow-y: auto;                /* internal scroll for content longer than viewport */
+  overflow-x: hidden;
+}
+
+/* ── BODY — pinned to column 2 / row 2 of .ds-preview's grid ── */
+/* Top-left at exact (56, 128) · 12px Spacing/6 padding all sides */
+.ds-main {
+  grid-column: 2;
+  grid-row: 2;
+  min-width: 0;                    /* allow grid item to shrink below content intrinsic width */
+  margin: 0;                       /* no margins → no collapse, no inline jitter */
+  padding: 12px;                   /* Spacing/6 on all sides */
+  display: flex;
+  flex-direction: column;
+  gap: 12px;                       /* Spacing/6 between body-sections */
+  background: var(--pds-primary-0);             /* Primary/0 */
+}
+
+/* ── PAGE HEADER — currently hidden, body-sections take over ── */
+.ds-page-header {
+  display: none;
+}
+
+/* Heading/5 — 28px / 34px, SemiBold (IBM Plex Sans) */
+.ds-page-title {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 28px;
+  font-weight: 500;
+  line-height: 34px;
+  color: #262626;
+}
+
+/* Body/3 — 14px / 20px, Regular */
+.ds-page-subtitle {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  color: #8c8c8c;
+  margin-top: 4px;
+}
+
+/* ── BODY-SECTION — card-like container for each component group ── */
+.ds-section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;                       /* Spacing/6 — between pop-up-header and play-area */
+  padding: 12px;                   /* Spacing/6 on all sides */
+  background: #ffffff;             /* Grey/0 */
+  border: 1px solid #e4e4e4;       /* Grey/3 */
+  border-radius: 12px;             /* Radius/6 */
+  min-width: 0;                    /* allow flex item to shrink below content intrinsic width */
+}
+
+/* ── CARD-HEADER — title + description block ── */
+/* Heading/3 — 20px / 26px, SemiBold */
+.ds-section__title {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 26px;
+  color: #262626;
+}
+
+/* Body/3 — 14px / 20px, Regular */
+.ds-section__desc {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  color: #8c8c8c;
+  margin-top: 4px;
+}
+
+/* ── PLAY-AREA — wraps the section's variants ── */
+.play-area {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;                   /* Spacing/6 */
+}
+
+/* ── Type title (Primary / Secondary / Tertiary) ── */
+/* Heading/2 — 16px / 22px, SemiBold */
+.ds-type-title {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 22px;
+  color: #263b74;
+  margin: 16px 0 8px;
+  padding-left: 10px;
+  border-left: 3px solid #263b74;
+}
+
+.ds-type-title:first-child {
+  margin-top: 0;
+}
+
+/* ── Token group — play-area gap handles spacing between groups ── */
+.ds-token-group {
+  margin-bottom: 0;
+}
+
+/* Body Highlight/2 — 12px / 18px, Medium */
+.ds-token-label {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 18px;
+  letter-spacing: 0;
+  color: #9d9d9d;                      /* Grey/5 */
+  margin-bottom: 4px;                  /* Spacing/2 */
+}
+
+/* ── Matrix: Default | Hover | Disabled ── */
+.ds-matrix-row {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));  /* allow tracks to shrink below content */
+  gap: 8px;
+}
+
+.ds-matrix-cell {
+  background: #ffffff;
+  border: 1px solid #e8e8e8;
+  border-radius: 8px;
+  padding: 12px 16px;
+}
+
+/* ── State tag ── */
+/* Tight Body Highlight/1 — 10px / 12px, Medium · UPPERCASE preserved */
+.ds-state-tag {
+  display: inline-block;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #595959;
+  background: #f0f0f0;
+  border-radius: 4px;
+  padding: 2px 6px;
+  margin-bottom: 12px;
+}
+
+.ds-state-tag--hover {
+  color: var(--pds-primary-3);
+  background: #fdf0ef;
+}
+
+.ds-state-tag--disabled {
+  color: #9d9d9d;
+  background: #f5f5f5;
+}
+
+/* ── Alert badge swatch ── */
+.ds-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  background: #fcfcfc;                 /* Grey/1 */
+  border: 1px solid #e8e8e8;
+  border-radius: 8px;
+  padding: 16px 20px;
+}
+
+/* Alert Badge section — Spacing/6 padding & gap · vertically centred (inherited from .ds-row) */
+#sec-alert-badge .ds-row {
+  padding: 12px;               /* Spacing/6 */
+  gap: 12px;                   /* Spacing/6 */
+  align-items: center;
+}
+
+/* Button section — Spacing/6 gap between cells · Secondary/0 background */
+#sec-button .ds-matrix-row {
+  gap: 12px;                   /* Spacing/6 */
+}
+
+#sec-button .ds-matrix-cell .ds-row {
+  gap: 12px;                   /* Spacing/6 between buttons */
+}
+
+#sec-button .ds-matrix-cell {
+  padding: 12px;               /* Spacing/6 */
+  background: #f4f5f8;         /* Secondary/0 */
+  border-color: #e4e4e4;       /* Grey/3 */
+}
+
+/* All body sections — tighter padding on rows (Spacing/6) */
+#sec-switch .ds-row,
+#sec-radio .ds-row,
+#sec-checkbox .ds-row,
+#sec-toast .ds-row,
+#sec-semantic-pop-ups .ds-row,
+#sec-profile-avatar .ds-row,
+#sec-search .ds-row,
+#sec-selector .ds-row,
+#sec-date-picker .ds-row,
+#sec-time-picker .ds-row,
+#sec-upload-files .ds-row,
+#sec-input-field .ds-row,
+#sec-tool-tip .ds-row,
+#sec-filter-drawer .ds-row,
+#sec-tab-bar .ds-row,
+#sec-bread-crumbs .ds-row,
+#sec-progress-bar .ds-row,
+#sec-scroller .ds-row,
+#sec-pop-up-layout .ds-row,
+#sec-top-navigation-bar .ds-row,
+#sec-table .ds-row {
+  padding: 12px;               /* Spacing/6 */
+}
+
+/* Chip Tag, Toast, Switch, Radio, Checkbox, Progress Bar, Semantic Pop-ups — Spacing/6 gap */
+#sec-chip-tag .ds-row,
+#sec-toast .ds-row,
+#sec-switch .ds-row,
+#sec-radio .ds-row,
+#sec-checkbox .ds-row,
+#sec-progress-bar .ds-row,
+#sec-semantic-pop-ups .ds-row,
+#sec-profile-avatar .ds-row,
+#sec-selector .ds-row,
+#sec-upload-files .ds-row,
+#sec-input-field .ds-row,
+#sec-tool-tip .ds-row,
+#sec-filter-drawer .ds-row,
+#sec-tab-bar .ds-row,
+#sec-bread-crumbs .ds-row,
+#sec-top-navigation-bar .ds-row,
+#sec-table .ds-row {
+  gap: 12px;                   /* Spacing/6 */
+}
+
+/* Chip Tag section — tighter padding on rows */
+#sec-chip-tag .ds-row {
+  padding: 12px;               /* Spacing/6 */
+}
+
+/* Pop-up Header, Section Header & Pop-up Footer sections — tighter padding on card previews */
+#sec-pop-up-header .ds-card-preview,
+#sec-section-header .ds-card-preview,
+#sec-pop-up-footer .ds-card-preview {
+  padding: 12px;               /* Spacing/6 */
+}
+
+/* Button rows inside matrix cells don't need card bg */
+.ds-matrix-cell .ds-row {
+  background: transparent;
+  border: none;
+  padding: 0;
+  border-radius: 0;
+}
+
+.ds-swatch-item {
+  align-self: flex-start;
+  display: grid;
+  grid-template-rows: auto 28px;
+  justify-items: center;
+  gap: 6px;
+  min-width: 96px;
+}
+
+/* Lock first row to the exact component height so subpixel border changes can't shift it */
+.ds-swatch-item:has(.pds-checkbox--size-0),
+.ds-swatch-item:has(.pds-radio--size-0),
+.ds-swatch-item:has(.pds-switch--size-0)  { grid-template-rows: 16px 28px; }
+
+.ds-swatch-item:has(.pds-checkbox--size-1),
+.ds-swatch-item:has(.pds-radio--size-1),
+.ds-swatch-item:has(.pds-switch--size-1)  { grid-template-rows: 20px 28px; }
+
+.ds-swatch-item:has(.pds-checkbox--size-2),
+.ds-swatch-item:has(.pds-radio--size-2),
+.ds-swatch-item:has(.pds-switch--size-2)  { grid-template-rows: 24px 28px; }
+
+/* Body/1 — 10px / 16px, Regular */
+.ds-swatch-label {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 10px;
+  font-weight: 400;
+  line-height: 16px;
+  color: #8c8c8c;
+  text-align: center;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ── Card preview wrapper ── */
+.ds-card-preview {
+  background: #fcfcfc;                 /* Grey/1 */
+  border: 1px solid #e8e8e8;
+  border-radius: 8px;
+  padding: 16px 20px;
+}
+
+/* ── Divider (deprecated — gap between sections used now) ── */
+.ds-divider {
+  display: none;
+}
+
+/* ── USER MENU DROPDOWN — fixed overlay below web-header user-info ── */
+.user-menu-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 9998;
+  background: transparent;
+}
+
+.user-menu-overlay {
+  position: fixed;
+  z-index: 9999;
+}
+
+/* ── THEME MENU SELECTOR — fixed overlay to the left of user menu ── */
+.theme-menu-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 9997;
+  background: transparent;
+}
+
+.theme-menu-overlay {
+  position: fixed;
+  z-index: 9998;
+}
+
+/* Shared Popup — Popup content and styling for "Never Miss a Beat" popup */
+.pds-popup-content {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;                  /* Spacing/6 between input-fields */
+}
+
+.pds-popup-content pds-input-field {
+  width: 100%;
+}
+

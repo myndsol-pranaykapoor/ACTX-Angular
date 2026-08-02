@@ -1,0 +1,267 @@
+.pds-login-container {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+  background-color: #ffffff;
+}
+
+.pds-display-section {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-6) 0 var(--spacing-6) var(--spacing-6);
+  background-color: var(--pds-primary-0);
+}
+
+.pds-display-window {
+  width: 100%;
+  height: 100%;
+  border-radius: var(--radius-6);
+  padding: var(--spacing-6);
+  background-color: #B0E6CE;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-16);
+}
+
+/* ─── LOGIN DISPLAY CONTENT ─── */
+
+.pds-login-display-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-6);
+  flex: 0 0 auto;
+  width: 100%;
+  padding: var(--spacing-6);
+}
+
+/* Logo Display */
+.pds-logo-display {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--spacing-6);
+}
+
+.pds-logo-display__logo {
+  height: 36px;
+  width: auto;
+  flex-shrink: 0;
+  object-fit: contain;
+}
+
+.pds-logo-display__spacer {
+  flex: 1;
+}
+
+/* Title Content */
+.pds-title-content {
+  padding: var(--spacing-6) 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-6);
+}
+
+.pds-title-content__main {
+  margin: 0;
+  font-size: 54px;
+  line-height: 64px;
+  font-weight: 500;
+  color: var(--pds-secondary-3);
+}
+
+.pds-title-content__subtitle {
+  margin: 0;
+  font-size: 20px;
+  line-height: 26px;
+  font-weight: 500;
+  color: var(--pds-secondary-3);
+}
+
+/* Bullet Points Content */
+.pds-bullet-points-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-6);
+  padding: var(--spacing-6) 0;
+}
+
+.pds-bullet-point-row {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: var(--spacing-4);
+}
+
+.pds-bullet-point-row__icon {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  color: var(--pds-secondary-3);
+}
+
+.pds-bullet-point-row__text {
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 500;
+  color: var(--pds-secondary-3);
+}
+
+/* ─── SECURITY SHIELD ─── */
+
+.pds-security-shield {
+  flex: 1;
+  width: auto;
+  object-fit: contain;
+  object-position: center;
+}
+
+/* ─── HORIZONTAL STROKE ─── */
+
+.pds-horizontal-stroke {
+  width: 100%;
+  height: 6px;
+  background-color: #54C895;
+  border-radius: 3px;
+  flex-shrink: 0;
+}
+
+.pds-login-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-left: var(--spacing-8);
+  padding-right: var(--spacing-8);
+  gap: var(--spacing-0);
+  background-color: var(--pds-primary-0);
+  overflow-y: auto;
+}
+
+.pds-transparent-spacer {
+  flex: 1;
+}
+
+.pds-body-section {
+  display: flex;
+  flex-direction: column;
+  width: 360px;
+  padding: var(--spacing-6);
+  gap: var(--spacing-6);
+  background-color: var(--pds-grey-0);
+  border: 1px solid var(--pds-grey-3);
+  border-radius: var(--radius-6);
+  box-shadow: var(--elevation-3);
+}
+
+.pds-play-area {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-6);
+  padding: var(--spacing-6);
+  background-color: var(--pds-grey-0);
+  border: 1px solid var(--pds-grey-3);
+  border-radius: var(--radius-4);
+}
+
+.pds-separator-line {
+  height: 1px;
+  background-color: var(--pds-grey-3);
+  width: 100%;
+}
+
+/* Make size/1 buttons fill width in play-area */
+.pds-play-area pds-button button.pds-button--size-1 {
+  width: 100%;
+  display: flex;
+}
+
+.pds-play-area pds-button button.pds-button--size-0 {
+  width: auto;
+}
+
+/* ─── WEB FOOTER STYLING FOR LOGIN SCREEN ─── */
+
+pds-web-footer {
+  flex-shrink: 0;
+  width: 100%;
+  align-self: stretch;
+}
+
+.pds-web-footer {
+  display: flex !important;
+  flex-direction: column-reverse !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: var(--spacing-2) !important;
+  padding: var(--spacing-6) !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  flex-shrink: 0 !important;
+}
+
+/* Copyright text section */
+.pds-wf__rights {
+  flex: 0 0 auto !important;
+  width: auto !important;
+  height: auto !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.pds-wf__copy {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--pds-grey-7);
+  white-space: normal;
+  text-align: center;
+}
+
+.pds-wf__company {
+  font-weight: 500;
+  color: var(--pds-secondary-3);
+}
+
+/* Hide actions section */
+.pds-wf__actions {
+  display: none !important;
+}
+
+/* Powered-by section with logos and text */
+.pds-wf__powered {
+  flex: 0 0 auto !important;
+  width: auto !important;
+  height: auto !important;
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: var(--spacing-2) !important;
+}
+
+.pds-wf__powered-text {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--pds-grey-5);
+  white-space: nowrap;
+}
+
+.pds-wf__tool-logo {
+  flex-shrink: 0;
+  object-fit: contain;
+  object-position: center;
+}
+
+.pds-wf__company-logo {
+  flex-shrink: 0;
+  object-fit: contain;
+  object-position: center;
+}

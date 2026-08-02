@@ -1,0 +1,372 @@
+<!-- Side Menu -->
+<pds-side-menu
+  [entries]="sideMenuEntries"
+  [version]="sideMenuVersion"
+  [action1Icon]="sideMenuAction1Icon"
+  [action2Icon]="sideMenuAction2Icon"
+  [action3Icon]="sideMenuAction3Icon"
+  (itemSelected)="onSideMenuItemSelected($event)"
+  (action1Click)="onSideMenuAction1Click()"
+  (action2Click)="onSideMenuAction2Click()"
+  (action3Click)="onSideMenuAction3Click()"
+></pds-side-menu>
+
+<!-- Web Header — fixed at top -->
+<pds-web-header
+  logoSrc="/images/myndx-logo.svg"
+  logoAlt="Mynd Logo"
+  [notificationCount]="0"
+  userAvatarSrc="/images/avatar.png"
+  userName="Pranay Kapoor"
+  userDesignation="Product Designer"
+></pds-web-header>
+
+<!-- Command Bar — fixed below web-header -->
+<pds-command-bar
+  title="Home"
+  (back)="onSideMenuAction3Click()"
+  [showSecondary]="true"
+  secondaryLabel="Filter"
+  secondaryIcon="filter"
+  [showPrimary]="false"
+  (secondaryClick)="onCommandBarSecondaryClick()"
+></pds-command-bar>
+
+<!-- Main scrollable content area -->
+<main class="pds-select-module-main">
+
+  <!-- Top Body Section -->
+  <section class="pds-section pds-section--show-icon pds-section--auto-height">
+    <pds-section-header
+      title="Important Updates"
+      subtitle="Stay informed with the latest updates and announcements."
+      [showSubtitle]="true"
+      [showIcon]="true"
+      icon="bell"
+      [showButton1]="false"
+      [showButton2]="false"
+      [showButton3]="true"
+      button3Type="tertiary"
+      button3Label=""
+      button3Icon="chevron-right"
+      [showButton4]="true"
+      button4Type="tertiary"
+      button4Label=""
+      button4Icon="chevron-left"
+      buttonSpacing="default"
+      (button3Click)="onNextUpdate()"
+      (button4Click)="onPreviousUpdate()"
+    />
+    <div class="play-area">
+      <div class="updates-carousel__container">
+        @for (update of complianceUpdates; track $index) {
+          <div
+            class="updates-carousel__slide"
+            [class.updates-carousel__slide--active]="$index === currentUpdateIndex()"
+            [class.updates-carousel__slide--exit-left]="$index === (currentUpdateIndex() - 1 + complianceUpdates.length) % complianceUpdates.length && navigateDirection() === 'left'"
+            [class.updates-carousel__slide--exit-right]="$index === (currentUpdateIndex() - 1 + complianceUpdates.length) % complianceUpdates.length && navigateDirection() === 'right'"
+            [class.updates-carousel__slide--enter-right]="$index === currentUpdateIndex() && navigateDirection() === 'left'"
+            [class.updates-carousel__slide--enter-left]="$index === currentUpdateIndex() && navigateDirection() === 'right'"
+          >
+            <div class="updates-carousel__title-row">
+              <h3 class="updates-carousel__title">{{ update.title }}</h3>
+              <pds-chip-tag
+                [type]="'border'"
+                [size]="0"
+                [label]="update.releaseDate"
+                [showSupportingIcon]="false"
+                [showAction]="false"
+              ></pds-chip-tag>
+            </div>
+            <p class="updates-carousel__description">{{ update.description }}</p>
+          </div>
+        }
+      </div>
+    </div>
+    <div class="updates-carousel__indicators">
+      @for (update of complianceUpdates; track $index) {
+        <div
+          class="indicator"
+          [class.indicator--active]="$index === currentUpdateIndex()"
+        ></div>
+      }
+    </div>
+  </section>
+
+  <!-- Section Row — Four body-sections displayed horizontally -->
+  <div class="pds-section-row">
+
+    <!-- Section 1 -->
+    <section class="pds-section pds-section--show-icon">
+      <pds-pop-up-header
+        title="Maker Status"
+        subtitle="Track your filing status."
+        [showSubtitle]="false"
+        [showIcon]="true"
+        icon="check-circle"
+        [showButton1]="false"
+        [showButton2]="false"
+        [showButton3]="false"
+        [showButton4]="true"
+        button4Type="tertiary"
+        button4Icon="external-link"
+      />
+      <p class="heading-4">85</p>
+      <div class="chip-tags-container">
+        <pds-chip-tag
+          [type]="'border'"
+          [size]="0"
+          [colorScheme]="'error'"
+          [label]="'Expired SLA : ' + complianceExpiredSLA()"
+          supportingIcon="alert-circle"
+          [showSupportingIcon]="true"
+          [showAction]="false"
+        ></pds-chip-tag>
+        <pds-chip-tag
+          [type]="'border'"
+          [size]="0"
+          [colorScheme]="'success'"
+          [label]="'Within SLA : ' + complianceWithinSLA()"
+          supportingIcon="check-circle"
+          [showSupportingIcon]="true"
+          [showAction]="false"
+        ></pds-chip-tag>
+      </div>
+    </section>
+
+    <!-- Section 2 -->
+    <section class="pds-section pds-section--show-icon">
+      <pds-pop-up-header
+        title="Checker Status"
+        subtitle="Items awaiting attention."
+        [showSubtitle]="false"
+        [showIcon]="true"
+        icon="alert-circle"
+        [showButton1]="false"
+        [showButton2]="false"
+        [showButton3]="false"
+        [showButton4]="true"
+        button4Type="tertiary"
+        button4Icon="external-link"
+      />
+      <p class="heading-4">5</p>
+      <div class="chip-tags-container">
+        <pds-chip-tag
+          [type]="'border'"
+          [size]="0"
+          [colorScheme]="'error'"
+          [label]="'Expired SLA : ' + actionsExpiredSLA()"
+          supportingIcon="alert-circle"
+          [showSupportingIcon]="true"
+          [showAction]="false"
+        ></pds-chip-tag>
+        <pds-chip-tag
+          [type]="'border'"
+          [size]="0"
+          [colorScheme]="'success'"
+          [label]="'Within SLA : ' + actionsWithinSLA()"
+          supportingIcon="check-circle"
+          [showSupportingIcon]="true"
+          [showAction]="false"
+        ></pds-chip-tag>
+      </div>
+    </section>
+
+    <!-- Section 3 -->
+    <section class="pds-section pds-section--show-icon">
+      <pds-pop-up-header
+        title="Registration & Licenses"
+        subtitle="Required filings and records."
+        [showSubtitle]="false"
+        [showIcon]="true"
+        icon="file"
+        [showButton1]="false"
+        [showButton2]="false"
+        [showButton3]="false"
+        [showButton4]="true"
+        button4Type="tertiary"
+        button4Icon="external-link"
+      />
+      <p class="heading-4">24</p>
+      <div class="chip-tags-container">
+        <pds-chip-tag
+          [type]="'border'"
+          [size]="0"
+          [colorScheme]="'error'"
+          [label]="'Expired SLA : ' + documentsExpiredSLA()"
+          supportingIcon="alert-circle"
+          [showSupportingIcon]="true"
+          [showAction]="false"
+        ></pds-chip-tag>
+        <pds-chip-tag
+          [type]="'border'"
+          [size]="0"
+          [colorScheme]="'success'"
+          [label]="'Within SLA : ' + documentsWithinSLA()"
+          supportingIcon="check-circle"
+          [showSupportingIcon]="true"
+          [showAction]="false"
+        ></pds-chip-tag>
+      </div>
+    </section>
+
+    <!-- Section 4 -->
+    <section class="pds-section pds-section--show-icon">
+      <pds-pop-up-header
+        title="Notices"
+        subtitle="System alerts and messages."
+        [showSubtitle]="false"
+        [showIcon]="true"
+        icon="bell"
+        [showButton1]="false"
+        [showButton2]="false"
+        [showButton3]="false"
+        [showButton4]="true"
+        button4Type="tertiary"
+        button4Icon="external-link"
+      />
+      <p class="heading-4">12</p>
+      <div class="chip-tags-container">
+        <pds-chip-tag
+          [type]="'border'"
+          [size]="0"
+          [label]="'Today\'s Tasks : ' + notificationsExpiredSLA()"
+          supportingIcon="clock"
+          [showSupportingIcon]="true"
+          [showAction]="true"
+          actionIcon="chevron-right"
+        ></pds-chip-tag>
+        <pds-chip-tag
+          [type]="'border'"
+          [size]="0"
+          [label]="'Upcoming Tasks : ' + notificationsWithinSLA()"
+          supportingIcon="calendar"
+          [showSupportingIcon]="true"
+          [showAction]="true"
+          actionIcon="chevron-right"
+        ></pds-chip-tag>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- Body Section Row — Two sections displayed horizontally -->
+  <div class="pds-section-row">
+
+    <!-- Welcome Section -->
+    <section class="pds-section">
+      <pds-section-header
+        title="Act Wise"
+        subtitle="Your compliance and wage management solution."
+        [showSubtitle]="true"
+        [showIcon]="true"
+        icon="home"
+        [showButton1]="false"
+        [showButton2]="false"
+        [showButton3]="false"
+        [showButton4]="true"
+        button4Type="tertiary"
+        button4Label=""
+        button4Icon="external-link"
+        buttonSpacing="default"
+      />
+      <pds-chip-tag
+        [type]="'border'"
+        [size]="0"
+        [label]="currentMonthDateRange"
+        [showSupportingIcon]="false"
+        [showAction]="false"
+      ></pds-chip-tag>
+      <pds-table
+        [columns]="actWiseTableColumns"
+        [rows]="actWiseTableRows"
+        [totalItems]="actWiseTableTotalItems"
+        [pageSize]="actWiseTablePageSize"
+      ></pds-table>
+    </section>
+
+    <!-- Quick Access Section -->
+    <section class="pds-section">
+      <pds-section-header
+        title="Compliance Status"
+        subtitle="Access key features and tools."
+        [showSubtitle]="true"
+        [showIcon]="true"
+        icon="link"
+        [showButton1]="false"
+        [showButton2]="false"
+        [showButton3]="false"
+        [showButton4]="true"
+        button4Type="tertiary"
+        button4Label=""
+        button4Icon="external-link"
+        buttonSpacing="default"
+      />
+      <pds-chip-tag
+        [type]="'border'"
+        [size]="0"
+        [label]="currentMonthDateRange"
+        [showSupportingIcon]="false"
+        [showAction]="false"
+      ></pds-chip-tag>
+      <pds-table
+        [columns]="complianceStatusTableColumns"
+        [rows]="complianceStatusTableRows"
+        [totalItems]="complianceStatusTableTotalItems"
+        [pageSize]="complianceStatusTablePageSize"
+      ></pds-table>
+    </section>
+
+  </div>
+
+  <!-- New Body Section -->
+  <section class="pds-section">
+    <pds-section-header
+      title="Score Card"
+      subtitle="Section subtitle goes here."
+      [showSubtitle]="true"
+      [showIcon]="true"
+      icon="info"
+      [showButton1]="false"
+      [showButton2]="false"
+      [showButton3]="false"
+      [showButton4]="true"
+      button4Type="tertiary"
+      button4Label=""
+      button4Icon="external-link"
+      buttonSpacing="default"
+    />
+    <pds-chip-tag
+      [type]="'border'"
+      [size]="0"
+      [label]="currentMonthDateRange"
+      [showSupportingIcon]="false"
+      [showAction]="false"
+    ></pds-chip-tag>
+    <div class="play-area play-area--fixed-height"></div>
+  </section>
+
+  <!-- Transparent Spacer — pushes web-footer to the bottom -->
+  <div class="pds-transparent-spacer"></div>
+
+  <!-- Web Footer — placed at the bottom, scrolls with content -->
+  <pds-web-footer
+    (action1Click)="onFooterAction1()"
+    (action2Click)="onFooterAction2()"
+  ></pds-web-footer>
+</main>
+
+<!-- Filter Drawer — opens as overlay when filter button is clicked -->
+<pds-filter-drawer
+  [visible]="filterDrawerOpen()"
+  title="Filter Options"
+  subtitle="Refine your results by selecting filters."
+  icon="filter"
+  [sections]="filterDrawerSections"
+  [expandedIndex]="0"
+  resetLabel="Reset"
+  applyLabel="Apply"
+  (closed)="onFilterDrawerClose()"
+  (applyClick)="onFilterDrawerApply()"
+  (resetClick)="onFilterDrawerReset()"
+></pds-filter-drawer>

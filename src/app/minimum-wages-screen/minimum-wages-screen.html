@@ -1,0 +1,148 @@
+<!-- Side Menu -->
+<pds-side-menu
+  [entries]="sideMenuEntries"
+  [version]="sideMenuVersion"
+  [action1Icon]="sideMenuAction1Icon"
+  [action2Icon]="sideMenuAction2Icon"
+  [action3Icon]="sideMenuAction3Icon"
+  (itemSelected)="onSideMenuItemSelected($event)"
+  (action1Click)="onSideMenuAction1Click()"
+  (action2Click)="onSideMenuAction2Click()"
+  (action3Click)="onSideMenuAction3Click()"
+></pds-side-menu>
+
+<!-- Web Header — fixed at top -->
+<pds-web-header
+  logoSrc="/images/myndx-logo.svg"
+  logoAlt="Mynd Logo"
+  [notificationCount]="0"
+  userAvatarSrc=""
+  userName="User"
+  userDesignation="Administrator"
+></pds-web-header>
+
+<!-- Command Bar — fixed below web-header -->
+<pds-command-bar
+  title="Minimum Wages"
+  (back)="onBackClick()"
+  [showSecondary]="true"
+  secondaryLabel="Get Regular Updates"
+  [showPrimary]="true"
+  primaryLabel="Login"
+  primaryIcon="log-in"
+  (secondaryClick)="onCommandBarSecondaryClick()"
+  (primaryClick)="onCommandBarPrimaryClick()"
+></pds-command-bar>
+
+<!-- Main scrollable content area -->
+<main class="pds-select-module-main">
+
+  <!-- Body Section Row — Two sections displayed horizontally -->
+  <div class="pds-section-row">
+
+    <!-- Minimum Wage Data Section -->
+    <section class="pds-section">
+      <pds-section-header
+        title="Minimum Wage data as per selection"
+        subtitle="Data for the selected state will display below."
+        [showSubtitle]="true"
+        [showIcon]="true"
+        icon="file"
+        [showButton1]="true"
+        button1Type="secondary"
+        button1Label="Download"
+        button1RightIcon="download"
+        [showButton2]="false"
+        [showButton3]="false"
+        [showButton4]="false"
+      >
+        <pds-search section-header-actions [placeholder]="'Search data...'"></pds-search>
+      </pds-section-header>
+      <pds-chip-tag
+        [type]="'border'"
+        [size]="0"
+        [label]="'Last Update On : ' + lastUpdateDate"
+        [showSupportingIcon]="false"
+        [showAction]="false"
+      ></pds-chip-tag>
+      <pds-table
+        [columns]="tableColumns"
+        [rows]="tableRows"
+        [totalItems]="tableTotalItems"
+        [pageSize]="tablePageSize"
+      ></pds-table>
+    </section>
+
+    <!-- New Body Section -->
+    <section class="pds-section">
+      <pds-section-header
+        title="State Selection"
+        subtitle="Search or select from the map directly."
+        [showSubtitle]="true"
+        [showIcon]="true"
+        icon="bar-chart-2"
+        [showButton1]="false"
+        [showButton2]="false"
+        [showButton3]="false"
+        [showButton4]="false"
+      />
+      <div class="play-area">
+        <div class="pds-input-row">
+          <pds-input-field
+            [type]="'drop-down'"
+            [label]="'Select State'"
+            [placeholder]="'Select State'"
+            [options]="indianStates"
+          ></pds-input-field>
+          <pds-input-field
+            [type]="'drop-down'"
+            [label]="'Select Industry'"
+            [placeholder]="'Select Industry'"
+            [options]="industries"
+          ></pds-input-field>
+        </div>
+        <pds-input-field
+          [type]="'drop-down'"
+          [label]="'Effective Time Period'"
+          [placeholder]="'Select Effective Time Period'"
+          [options]="effectiveTimePeriods"
+        ></pds-input-field>
+        <div class="pds-separator-line"></div>
+        <div class="india-map">
+          <object data="/images/india-map.svg" type="image/svg+xml" class="map-object"></object>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- Additional Information Section — kept in original place -->
+  <section class="pds-section">
+    <pds-section-header
+      title="Latest Notifications as per selection"
+      subtitle="The recent minimum wage notifications will display below."
+      [showSubtitle]="true"
+      [showIcon]="true"
+      icon="info"
+      [showButton1]="false"
+      [showButton2]="false"
+      [showButton3]="false"
+      [showButton4]="false"
+    />
+    <pds-table
+      [columns]="additionalTableColumns"
+      [rows]="additionalTableRows"
+      [totalItems]="additionalTableTotal"
+      [pageSize]="tablePageSize"
+    ></pds-table>
+  </section>
+
+  <!-- Transparent Spacer — pushes web-footer to the bottom -->
+  <div class="pds-transparent-spacer"></div>
+
+  <!-- Web Footer — placed at the bottom, scrolls with content -->
+  <pds-web-footer
+    (action1Click)="onFooterAction1()"
+    (action2Click)="onFooterAction2()"
+  ></pds-web-footer>
+</main>

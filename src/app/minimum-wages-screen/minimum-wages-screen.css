@@ -1,0 +1,392 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100%;
+}
+
+/* Fixed header and command bar */
+pds-web-header {
+  flex-shrink: 0;
+  position: fixed;
+  top: 0;
+  left: 56px;
+  right: 0;
+  z-index: 200;
+}
+
+/* Hide notification button and user-info in minimum-wages screen */
+.pds-web-header > pds-button {
+  display: none !important;
+}
+
+.pds-web-header__user-info {
+  display: none !important;
+}
+
+pds-command-bar {
+  flex-shrink: 0;
+  position: fixed;
+  top: 42px;
+  left: 56px;
+  right: 0;
+  z-index: 199;
+}
+
+/* Keep command-bar's default 56px left padding to avoid hiding behind side-menu */
+/* (no override needed — the default padding accommodates the 56px wide collapsed side-menu) */
+
+/* Hide search component in command-bar */
+.pds-command-bar__container pds-search {
+  display: none !important;
+}
+
+/* Main scrollable content area — positioned below fixed headers and after side-menu */
+.pds-select-module-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin-top: 84px;  /* 42px header + 42px command-bar */
+  margin-left: 56px; /* Account for fixed side-menu width */
+  min-height: calc(100vh - 84px);  /* Stretch to bottom edge of screen */
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 12px;      /* Spacing/6 */
+  gap: 12px;          /* Spacing/6 between sections */
+  background-color: var(--pds-primary-0);
+  min-width: 0;       /* Allow flex item to shrink below content intrinsic width */
+}
+
+/* Section Row — Container for horizontal section layout */
+.pds-section-row {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;          /* Spacing/6 */
+  min-width: 0;       /* Allow flex container to shrink below content intrinsic width */
+}
+
+/* Body Sections — Card-like containers */
+.pds-section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;          /* Spacing/6 */
+  padding: 12px;      /* Spacing/6 */
+  background: #ffffff;                /* Grey/0 */
+  border: 1px solid #e4e4e4;          /* Grey/3 */
+  border-radius: 12px;                /* Radius/6 */
+  min-width: 0;       /* Allow flex item to shrink below content intrinsic width */
+}
+
+/* Override flex for sections inside section-row */
+.pds-section-row .pds-section:first-child {
+  flex: 3;            /* Minimum Wage data — 3 columns */
+}
+
+.pds-section-row .pds-section:nth-child(2) {
+  flex: 1;            /* Summary Information — 1 column */
+}
+
+/* Transparent Spacer — fills remaining space to push footer to bottom */
+.pds-transparent-spacer {
+  flex: 1;
+}
+
+pds-web-footer {
+  flex-shrink: 0;
+}
+
+/* Make icon-title fill width for all sections */
+.pds-section-row .pds-section .pds-section-header__icon-title {
+  flex: 1;
+  display: flex !important;
+  flex-shrink: 0;
+  min-width: 0;
+}
+
+/* Make title text fill width and truncate on narrow screens */
+.pds-section-row .pds-section .pds-section-header__title {
+  width: 100%;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+/* Hide spacers in main-row for all sections */
+.pds-section-row .pds-section .pds-section-header__spacer {
+  display: none !important;
+}
+
+/* Hide actions section in side-menu (can be enabled in future by removing this rule) */
+.pds-smc__actions {
+  display: none !important;
+}
+
+/* Play Area — Inside each section */
+.play-area {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;          /* Spacing/6 */
+  padding: 12px;      /* Spacing/6 */
+  background: #fcfcfc;                /* Grey/1 */
+  border: 1px solid #e8e8e8;
+  border-radius: 8px;
+  min-width: 0;
+}
+
+/* Remove background fill from play-area while keeping border */
+.play-area {
+  background-color: transparent !important;
+}
+
+/* Play area illustration styling */
+.play-area__illustration {
+  max-width: 200px;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  object-position: center;
+  margin: 0 auto;
+}
+
+/* Top-left align first body-section */
+.pds-section-row .pds-section:first-child {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  justify-content: flex-start !important;
+}
+
+pds-section-header {
+  width: 100%;
+}
+
+/* Top-left align title and subtitle for first body-section only */
+.pds-section-row .pds-section:first-child .pds-section-header__main-row {
+  height: auto;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+/* Hide spacers in main-row for all sections with illustrations */
+.pds-section-row .pds-section:first-child .pds-section-header__spacer,
+.pds-section-row .pds-section:nth-child(2) .pds-section-header__spacer,
+.pds-section-row .pds-section:nth-child(3) .pds-section-header__spacer,
+.pds-section-row .pds-section:nth-child(4) .pds-section-header__spacer {
+  display: none !important;
+}
+
+/* Make icon-title fill width for sections 2, 3, and 4 */
+.pds-section-row .pds-section:nth-child(2) .pds-section-header__icon-title,
+.pds-section-row .pds-section:nth-child(3) .pds-section-header__icon-title,
+.pds-section-row .pds-section:nth-child(4) .pds-section-header__icon-title {
+  flex: 1;
+  display: flex !important;
+  flex-shrink: 0;
+  min-width: 0;
+}
+
+/* Make title text fill width and truncate on narrow screens */
+.pds-section-row .pds-section:nth-child(2) .pds-section-header__title,
+.pds-section-row .pds-section:nth-child(3) .pds-section-header__title,
+.pds-section-row .pds-section:nth-child(4) .pds-section-header__title {
+  width: 100%;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+/* Allow multi-line subtitle for second body-section */
+.pds-section-row .pds-section:nth-child(2) .pds-section-header__subtitle {
+  height: auto !important;
+  white-space: pre-wrap !important;
+  overflow: visible !important;
+  text-overflow: clip !important;
+  word-wrap: break-word !important;
+}
+
+/* Allow multi-line subtitle for third body-section */
+.pds-section-row .pds-section:nth-child(3) .pds-section-header__subtitle {
+  height: auto !important;
+  white-space: pre-wrap !important;
+  overflow: visible !important;
+  text-overflow: clip !important;
+  word-wrap: break-word !important;
+}
+
+/* Allow multi-line subtitle for fourth body-section */
+.pds-section-row .pds-section:nth-child(4) .pds-section-header__subtitle {
+  height: auto !important;
+  white-space: pre-wrap !important;
+  overflow: visible !important;
+  text-overflow: clip !important;
+  word-wrap: break-word !important;
+}
+
+.pds-section-row .pds-section:first-child .pds-section-header__icon-title {
+  width: 100%;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  justify-content: flex-start !important;
+  flex-shrink: 1 !important;
+}
+
+.pds-section-row .pds-section:first-child .pds-section-header__title {
+  width: 100%;
+  text-align: left;
+  white-space: normal;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.pds-section-row .pds-section:first-child .pds-section-header__subtitle {
+  width: 100%;
+  text-align: left;
+  height: auto;
+  white-space: normal;
+  overflow: visible;
+  text-overflow: clip;
+}
+
+/* Indian Map Styling */
+.india-map {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.map-svg {
+  width: 100%;
+  height: auto;
+  max-width: 400px;
+}
+
+.state rect {
+  fill: #e8f4f8;
+  stroke: #2c5282;
+  stroke-width: 1;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.state rect:hover {
+  fill: #b3d9ff;
+  stroke: #1a365d;
+  stroke-width: 2;
+}
+
+.state rect.selected {
+  fill: var(--pds-primary-2);
+  stroke: var(--pds-primary-4);
+  stroke-width: 2;
+}
+
+.state-label {
+  font-size: 1.2px;
+  font-weight: 500;
+  text-anchor: middle;
+  dominant-baseline: middle;
+  pointer-events: none;
+  fill: #262626;
+}
+
+/* SVG Map styling with hover effects */
+svg.india-map-svg path {
+  cursor: pointer;
+  transition: fill 0.2s ease;
+  fill: #D4F1E7;
+}
+
+svg.india-map-svg path:hover {
+  fill: #54C895;
+}
+
+.map-object {
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  display: block;
+}
+
+.map-notice {
+  margin: 10px 0 0 0;
+  font-size: 12px;
+  color: #9d9d9d;
+  text-align: center;
+}
+
+/* Hide supporting icon in body-sections */
+.pds-section .pds-section-header__icon {
+  display: none !important;
+}
+
+/* Input row — two columns with spacing/6 gap */
+.pds-input-row {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;          /* Spacing/6 */
+}
+
+.pds-input-row pds-input-field {
+  flex: 1;            /* Equal width distribution */
+}
+
+/* Separator line — 1px solid grey/3 with rounded edges */
+.pds-separator-line {
+  height: 1px;
+  background-color: #e4e4e4;  /* Grey/3 */
+  border-radius: 12px;        /* Radius/6 */
+}
+
+/* Position search-bar between title and download button in section-header */
+.pds-section-header__main-row {
+  gap: 12px;                  /* Spacing/6 */
+}
+
+.pds-section-header__main-row .pds-section-header__icon-title {
+  order: 0;
+}
+
+.pds-section-header__main-row pds-search {
+  order: 1;                   /* Place search after title, before spacer */
+}
+
+.pds-section-header__main-row .pds-section-header__spacer {
+  order: 2;                   /* Spacer grows to push buttons right */
+}
+
+.pds-section-header__main-row pds-button {
+  order: 3;                   /* Buttons appear on the right */
+}
+
+/* Make pop-up footer buttons hug their content */
+.pds-pop-up-footer .pds-button {
+  min-width: auto !important;
+  width: auto;
+}
+
+/* Set semantic-popup width to 350px and height to auto to hug inner elements */
+pds-semantic-popup .pds-popup__container {
+  width: 350px !important;
+  height: auto !important;
+}
+
+/* Set table component total height to 200px */
+pds-table {
+  height: 200px !important;
+}
+
+/* Make table grid fill the parent table's available height */
+.pds-table__grid {
+  height: 100% !important;
+}
+
+/* Make "Minimum Wage data" table fill available height instead of fixed */
+.pds-section-row .pds-section:first-child pds-table {
+  flex: 1;
+  height: auto;
+}
+
+pds-pagination {
+  flex-shrink: 0;
+}
