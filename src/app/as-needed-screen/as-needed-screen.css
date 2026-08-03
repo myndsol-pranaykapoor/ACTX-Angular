@@ -175,7 +175,7 @@ pds-semantic-popup .pds-popup__container {
 /* Visible elements only: tab-bar, spacer-1, button-4 */
 
 pds-section-header .pds-section-header__main-row .pds-section-header__icon-title {
-  display: none;
+  display: none !important;
 }
 
 pds-section-header .pds-section-header__main-row pds-tab-bar[section-header-actions] {
@@ -184,10 +184,11 @@ pds-section-header .pds-section-header__main-row pds-tab-bar[section-header-acti
   min-width: 0;
 }
 
-/* Spacer 1 - pushes button-4 to the right */
-pds-section-header .pds-section-header__main-row .pds-section-header__spacer:nth-of-type(1) {
-  order: 2;
-  flex: 1;
+/* Spacer 1 - ENABLED to push button-4 to the right */
+pds-section-header .pds-section-header__main-row .pds-section-header__spacer:first-of-type {
+  order: 2 !important;
+  flex: 1 !important;
+  display: block !important;
 }
 
 /* Button 4 - only visible button */
@@ -197,5 +198,5 @@ pds-section-header .pds-section-header__main-row pds-button:nth-of-type(1) {
 
 /* Hide spacer 2 */
 pds-section-header .pds-section-header__main-row .pds-section-header__spacer:nth-of-type(2) {
-  display: none;
+  display: none !important;
 }
