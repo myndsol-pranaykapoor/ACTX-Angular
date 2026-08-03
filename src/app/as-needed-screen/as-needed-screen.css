@@ -170,3 +170,11 @@ pds-semantic-popup .pds-popup__container {
   flex-direction: row;
   gap: 12px;                  /* Spacing/6 */
 }
+
+/* Tab Bar styling inside section-header main-row */
+pds-section-header pds-tab-bar {
+  flex: 1;
+  display: flex;
+  width: 100%;
+  min-width: 0;
+}

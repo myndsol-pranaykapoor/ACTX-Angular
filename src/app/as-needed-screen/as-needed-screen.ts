@@ -8,11 +8,12 @@ import { PopUpHeaderComponent } from '../pop-up-header/pop-up-header.component';
 import { ChipTagComponent } from '../chip-tag/chip-tag.component';
 import { FilterDrawerComponent, FilterDrawerSection } from '../filter-drawer/filter-drawer.component';
 import { TableComponent, TableHeaderColumn, DataRowTabConfig } from '../table/table.component';
+import { TabBarComponent, TabBarItem } from '../tab-bar/tab-bar.component';
 
 @Component({
   selector: 'pds-as-needed-screen',
   standalone: true,
-  imports: [CommonModule, WebHeaderComponent, CommandBarComponent, WebFooterComponent, SectionHeaderComponent, PopUpHeaderComponent, ChipTagComponent, FilterDrawerComponent, TableComponent],
+  imports: [CommonModule, WebHeaderComponent, CommandBarComponent, WebFooterComponent, SectionHeaderComponent, PopUpHeaderComponent, ChipTagComponent, FilterDrawerComponent, TableComponent, TabBarComponent],
   templateUrl: './as-needed-screen.html',
   styleUrl: './as-needed-screen.css',
   encapsulation: ViewEncapsulation.None,
@@ -132,6 +133,14 @@ export class AsNeededScreen {
   asNeededTableTotalItems = 10;
   asNeededTablePageSize = 10;
 
+  // Tab Bar Configuration for As Needed Reports
+  asNeededTabItems: TabBarItem[] = [
+    { label: 'All Reports' },
+    { label: 'Generated' },
+    { label: 'Pending' },
+    { label: 'Archived' },
+  ];
+
   get currentMonthDateRange(): string {
     const today = new Date();
     const year = today.getFullYear();
@@ -166,6 +175,10 @@ export class AsNeededScreen {
 
   onFilterDrawerReset() {
     console.log('Filters reset');
+  }
+
+  onAsNeededTabChange(event: any) {
+    console.log('As Needed tab changed to:', event);
   }
 
   onCommandBarPrimaryClick() {

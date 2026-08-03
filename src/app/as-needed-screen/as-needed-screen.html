@@ -176,11 +176,9 @@
     <!-- As Needed Reports Section -->
     <section class="pds-section">
       <pds-section-header
-        title="As Needed Reports"
-        subtitle="On-demand report generation and management."
-        [showSubtitle]="true"
-        [showIcon]="true"
-        icon="file-text"
+        [showTitle]="false"
+        [showSubtitle]="false"
+        [showIcon]="false"
         [showButton1]="false"
         [showButton2]="false"
         [showButton3]="false"
@@ -189,7 +187,13 @@
         button4Label=""
         button4Icon="external-link"
         buttonSpacing="default"
-      />
+      >
+        <pds-tab-bar
+          [items]="asNeededTabItems"
+          [selectedIndex]="0"
+          (selectionChange)="onAsNeededTabChange($event)"
+        ></pds-tab-bar>
+      </pds-section-header>
       <pds-chip-tag
         [type]="'border'"
         [size]="0"
