@@ -171,10 +171,16 @@ pds-semantic-popup .pds-popup__container {
   gap: 12px;                  /* Spacing/6 */
 }
 
-/* Tab Bar styling inside section-header main-row */
-pds-section-header pds-tab-bar {
-  flex: 1;
+/* Section Header with Tab Bar Container */
+.pds-section-header-with-tabs {
   display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
+
+/* Tab Bar styling - full width below section header */
+.pds-section-header-with-tabs pds-tab-bar {
   width: 100%;
   min-width: 0;
 }
