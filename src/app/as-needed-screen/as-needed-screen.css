@@ -133,9 +133,9 @@ pds-web-footer {
   height: 200px !important;
 }
 
-/* Set table component total height to 200px */
+/* Set table component total height to 400px for As Needed screen */
 pds-table {
-  height: 200px !important;
+  height: 400px !important;
 }
 
 /* Make table grid fill the parent table's available height */
