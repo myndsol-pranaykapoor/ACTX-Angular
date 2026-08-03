@@ -50,10 +50,11 @@ import { WebLoginScreenComponent } from './web-login-screen/web-login-screen.com
 import { SelectModuleScreenComponent } from './select-module-screen/select-module-screen.component';
 import { MinimumWagesScreen } from './minimum-wages-screen/minimum-wages-screen';
 import { HomeScreen } from './home-screen/home-screen';
+import { AsNeededScreen } from './as-needed-screen/as-needed-screen';
 
 @Component({
   selector: 'app-root',
-  imports: [AlertBadgeComponent, ButtonComponent, ChipTagComponent, PopUpHeaderComponent, PopUpFooterComponent, ToastComponent, SwitchComponent, RadioComponent, CheckboxComponent, ProgressBarComponent, ScrollerComponent, PopupLayoutComponent, ProfileAvatarComponent, WebHeaderComponent, SemanticPopupComponent, SearchComponent, CommandBarComponent, SideMenuItemComponent, SideMenuItemsCollectionComponent, SideMenuComponent, WebFooterComponent, OptionComponent, SelectorComponent, DateTimeSelectionStateComponent, DatePickerComponent, TimePickerComponent, UploadFilesComponent, LabelContainerComponent, InputAreaComponent, InputFieldComponent, ToolTipComponent, FilterSectionComponent, FilterDrawerComponent, TabComponent, TabBarComponent, CrumbComponent, BreadCrumbsComponent, TopNavTabComponent, TopNavBarComponent, PaginationComponent, DataRowTabComponent, DataRowComponent, HeadingColumnTitleComponent, TableHeaderComponent, TableComponent, SectionHeaderComponent, WebLoginScreenComponent, SelectModuleScreenComponent, MinimumWagesScreen, HomeScreen],
+  imports: [AlertBadgeComponent, ButtonComponent, ChipTagComponent, PopUpHeaderComponent, PopUpFooterComponent, ToastComponent, SwitchComponent, RadioComponent, CheckboxComponent, ProgressBarComponent, ScrollerComponent, PopupLayoutComponent, ProfileAvatarComponent, WebHeaderComponent, SemanticPopupComponent, SearchComponent, CommandBarComponent, SideMenuItemComponent, SideMenuItemsCollectionComponent, SideMenuComponent, WebFooterComponent, OptionComponent, SelectorComponent, DateTimeSelectionStateComponent, DatePickerComponent, TimePickerComponent, UploadFilesComponent, LabelContainerComponent, InputAreaComponent, InputFieldComponent, ToolTipComponent, FilterSectionComponent, FilterDrawerComponent, TabComponent, TabBarComponent, CrumbComponent, BreadCrumbsComponent, TopNavTabComponent, TopNavBarComponent, PaginationComponent, DataRowTabComponent, DataRowComponent, HeadingColumnTitleComponent, TableHeaderComponent, TableComponent, SectionHeaderComponent, WebLoginScreenComponent, SelectModuleScreenComponent, MinimumWagesScreen, HomeScreen, AsNeededScreen],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
@@ -68,8 +69,8 @@ export class App implements AfterViewInit, OnDestroy {
   }
   private readonly themeService = inject(ThemeService);
 
-  /** Current screen signal — 'login', 'home', 'select-module', or 'minimum-wages' */
-  protected currentScreen = signal<'login' | 'home' | 'select-module' | 'minimum-wages'>('login');
+  /** Current screen signal — 'login', 'home', 'select-module', 'minimum-wages', or 'as-needed' */
+  protected currentScreen = signal<'login' | 'home' | 'select-module' | 'minimum-wages' | 'as-needed'>('login');
 
   /** Popup state signals — shared across all screens */
   protected showUpdatesPopup = signal(false);
@@ -89,6 +90,10 @@ export class App implements AfterViewInit, OnDestroy {
 
   protected navigateToMinimumWages(): void {
     this.currentScreen.set('minimum-wages');
+  }
+
+  protected navigateToAsNeeded(): void {
+    this.currentScreen.set('as-needed');
   }
 
   protected showUpdatesForm(): void {

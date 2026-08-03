@@ -6,6 +6,7 @@
 } @else if (currentScreen() === 'home') {
   <pds-home-screen
     (navigateToLogin)="navigateToLogin()"
+    (navigateToAsNeeded)="navigateToAsNeeded()"
     (showUpdatesPopup)="showUpdatesForm()"
   ></pds-home-screen>
 } @else if (currentScreen() === 'select-module') {
@@ -20,6 +21,11 @@
     (navigateToLogin)="navigateToLogin()"
     (showUpdatesPopup)="showUpdatesForm()"
   ></pds-minimum-wages-screen>
+} @else if (currentScreen() === 'as-needed') {
+  <pds-as-needed-screen
+    (navigateToLogin)="navigateToLogin()"
+    (navigateToHome)="navigateToHome()"
+  ></pds-as-needed-screen>
 }
 
 <!-- Shared Popup Overlay — Never Miss a Beat (shown on all screens) -->

@@ -22,6 +22,7 @@ import { TableComponent, TableHeaderColumn, DataRowTabConfig } from '../table/ta
 })
 export class HomeScreen {
   @Output() navigateToLogin = new EventEmitter<void>();
+  @Output() navigateToAsNeeded = new EventEmitter<void>();
   @Output() showUpdatesPopup = new EventEmitter<void>();
 
   currentUpdateIndex = signal(0);
@@ -317,6 +318,9 @@ export class HomeScreen {
 
   onSideMenuItemSelected(itemId: string) {
     console.log('Side menu item selected:', itemId);
+    if (itemId === 'as-needed') {
+      this.navigateToAsNeeded.emit();
+    }
   }
 
   onSideMenuAction1Click() {

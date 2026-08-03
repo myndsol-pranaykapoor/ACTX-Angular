@@ -1,0 +1,218 @@
+<!-- Side Menu -->
+<pds-side-menu
+  [entries]="sideMenuEntries"
+  [version]="sideMenuVersion"
+  [action1Icon]="sideMenuAction1Icon"
+  [action2Icon]="sideMenuAction2Icon"
+  [action3Icon]="sideMenuAction3Icon"
+  (itemSelected)="onSideMenuItemSelected($event)"
+  (action1Click)="onSideMenuAction1Click()"
+  (action2Click)="onSideMenuAction2Click()"
+  (action3Click)="onSideMenuAction3Click()"
+></pds-side-menu>
+
+<!-- Web Header — fixed at top -->
+<pds-web-header
+  logoSrc="/images/myndx-logo.svg"
+  logoAlt="Mynd Logo"
+  [notificationCount]="0"
+  userAvatarSrc="/images/avatar.png"
+  userName="Pranay Kapoor"
+  userDesignation="Product Designer"
+></pds-web-header>
+
+<!-- Command Bar — fixed below web-header -->
+<pds-command-bar
+  title="As Needed"
+  (back)="onSideMenuAction3Click()"
+  [showSecondary]="true"
+  secondaryLabel="Filter"
+  secondaryIcon="filter"
+  [showPrimary]="false"
+  (secondaryClick)="onCommandBarSecondaryClick()"
+></pds-command-bar>
+
+<!-- Main scrollable content area -->
+<main class="pds-select-module-main">
+
+  <!-- Section Row — Four body-sections displayed horizontally -->
+  <div class="pds-section-row">
+
+    <!-- Section 1 -->
+    <section class="pds-section pds-section--show-icon">
+      <pds-pop-up-header
+        title="Generated Reports"
+        subtitle="Successfully created reports."
+        [showSubtitle]="false"
+        [showIcon]="true"
+        icon="check-circle"
+        [showButton1]="false"
+        [showButton2]="false"
+        [showButton3]="false"
+        [showButton4]="true"
+        button4Type="tertiary"
+        button4Icon="external-link"
+      />
+      <p class="heading-4">24</p>
+      <div class="chip-tags-container">
+        <pds-chip-tag
+          [type]="'border'"
+          [size]="0"
+          [colorScheme]="'success'"
+          [label]="'This Month : 8'"
+          supportingIcon="check-circle"
+          [showSupportingIcon]="true"
+          [showAction]="false"
+        ></pds-chip-tag>
+      </div>
+    </section>
+
+    <!-- Section 2 -->
+    <section class="pds-section pds-section--show-icon">
+      <pds-pop-up-header
+        title="Pending Reports"
+        subtitle="Awaiting generation."
+        [showSubtitle]="false"
+        [showIcon]="true"
+        icon="alert-circle"
+        [showButton1]="false"
+        [showButton2]="false"
+        [showButton3]="false"
+        [showButton4]="true"
+        button4Type="tertiary"
+        button4Icon="external-link"
+      />
+      <p class="heading-4">3</p>
+      <div class="chip-tags-container">
+        <pds-chip-tag
+          [type]="'border'"
+          [size]="0"
+          [colorScheme]="'alert'"
+          [label]="'Scheduled : 2'"
+          supportingIcon="clock"
+          [showSupportingIcon]="true"
+          [showAction]="false"
+        ></pds-chip-tag>
+      </div>
+    </section>
+
+    <!-- Section 3 -->
+    <section class="pds-section pds-section--show-icon">
+      <pds-pop-up-header
+        title="Report Templates"
+        subtitle="Custom templates available."
+        [showSubtitle]="false"
+        [showIcon]="true"
+        icon="file"
+        [showButton1]="false"
+        [showButton2]="false"
+        [showButton3]="false"
+        [showButton4]="true"
+        button4Type="tertiary"
+        button4Icon="external-link"
+      />
+      <p class="heading-4">12</p>
+      <div class="chip-tags-container">
+        <pds-chip-tag
+          [type]="'border'"
+          [size]="0"
+          [colorScheme]="'success'"
+          [label]="'Active : 10'"
+          supportingIcon="check-circle"
+          [showSupportingIcon]="true"
+          [showAction]="false"
+        ></pds-chip-tag>
+      </div>
+    </section>
+
+    <!-- Section 4 -->
+    <section class="pds-section pds-section--show-icon">
+      <pds-pop-up-header
+        title="Export History"
+        subtitle="Recent report exports."
+        [showSubtitle]="false"
+        [showIcon]="true"
+        icon="download"
+        [showButton1]="false"
+        [showButton2]="false"
+        [showButton3]="false"
+        [showButton4]="true"
+        button4Type="tertiary"
+        button4Icon="external-link"
+      />
+      <p class="heading-4">15</p>
+      <div class="chip-tags-container">
+        <pds-chip-tag
+          [type]="'border'"
+          [size]="0"
+          [label]="'This Week : 5'"
+          supportingIcon="calendar"
+          [showSupportingIcon]="true"
+          [showAction]="false"
+        ></pds-chip-tag>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- Body Section Row — As Needed Reports Table -->
+  <div class="pds-section-row">
+
+    <!-- As Needed Reports Section -->
+    <section class="pds-section">
+      <pds-section-header
+        title="As Needed Reports"
+        subtitle="On-demand report generation and management."
+        [showSubtitle]="true"
+        [showIcon]="true"
+        icon="file-text"
+        [showButton1]="false"
+        [showButton2]="false"
+        [showButton3]="false"
+        [showButton4]="true"
+        button4Type="tertiary"
+        button4Label=""
+        button4Icon="external-link"
+        buttonSpacing="default"
+      />
+      <pds-chip-tag
+        [type]="'border'"
+        [size]="0"
+        [label]="currentMonthDateRange"
+        [showSupportingIcon]="false"
+        [showAction]="false"
+      ></pds-chip-tag>
+      <pds-table
+        [columns]="asNeededTableColumns"
+        [rows]="asNeededTableRows"
+        [totalItems]="asNeededTableTotalItems"
+        [pageSize]="asNeededTablePageSize"
+      ></pds-table>
+    </section>
+
+  </div>
+
+  <!-- Transparent Spacer — pushes web-footer to the bottom -->
+  <div class="pds-transparent-spacer"></div>
+
+  <!-- Web Footer — placed at the bottom, scrolls with content -->
+  <pds-web-footer
+    (action1Click)="onFooterAction1()"
+    (action2Click)="onFooterAction2()"
+  ></pds-web-footer>
+</main>
+
+<!-- Filter Drawer — opens as overlay when filter button is clicked -->
+<pds-filter-drawer
+  [visible]="filterDrawerOpen()"
+  title="Filter Options"
+  subtitle="Refine your results by selecting filters."
+  icon="filter"
+  [sections]="filterDrawerSections"
+  [expandedIndex]="0"
+  resetLabel="Reset"
+  applyLabel="Apply"
+  (closed)="onFilterDrawerClose()"
+  (applyClick)="onFilterDrawerApply()"
+  (resetClick)="onFilterDrawerReset()"
+></pds-filter-drawer>
