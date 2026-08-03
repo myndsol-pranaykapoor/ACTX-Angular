@@ -1,3 +1,18 @@
+<!-- Shared Side Menu — Only shown on screens other than login and select-module -->
+@if (currentScreen() !== 'login' && currentScreen() !== 'select-module') {
+  <pds-side-menu
+    [entries]="sideMenuEntries"
+    [version]="sideMenuVersion"
+    [action1Icon]="sideMenuAction1Icon"
+    [action2Icon]="sideMenuAction2Icon"
+    [action3Icon]="sideMenuAction3Icon"
+    (itemSelected)="onSharedSideMenuItemSelected($event)"
+    (action1Click)="onSideMenuAction1Click()"
+    (action2Click)="onSideMenuAction2Click()"
+    (action3Click)="onSideMenuAction3Click()"
+  ></pds-side-menu>
+}
+
 @if (currentScreen() === 'login') {
   <pds-web-login-screen
     (navigateToHome)="navigateToHome()"

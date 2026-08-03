@@ -96,6 +96,69 @@ export class App implements AfterViewInit, OnDestroy {
     this.currentScreen.set('as-needed');
   }
 
+  // Shared Side Menu Configuration
+  protected sideMenuEntries: SideMenuEntry[] = [
+    {
+      id: 'home', title: 'Home', icon: 'home', type: 'item'
+    },
+    {
+      id: 'reports', title: 'Reports', icon: 'file-text', type: 'collection',
+      items: [
+        { id: 'activity-calendar', title: 'Activity Calendar' },
+        { id: 'as-needed', title: 'As Needed' },
+        { id: 'compliance-scores', title: 'Compliance Scores' },
+        { id: 'cxo-dashboard', title: 'CXO Dashboard' },
+        { id: 'score-card', title: 'Score Card' },
+        { id: 'in-process-status', title: 'In Process Status' },
+        { id: 'compliance-nature-wise', title: 'Compliance Nature Wise' },
+        { id: 'monthly-schedule', title: 'Monthly Schedule' },
+        { id: 'org-hierarchy', title: 'Org Hierarchy' },
+        { id: 'compliance-status', title: 'Compliance Status' }
+      ]
+    },
+    {
+      id: 'tools', title: 'Tools', icon: 'tool', type: 'collection',
+      items: [
+        { id: 'files-explorer', title: 'Files Explorer' },
+        { id: 'bulk-download', title: 'Bulk Download' }
+      ]
+    },
+    {
+      id: 'vendor-audit', title: 'Vendor Audit', icon: 'clipboard', type: 'collection',
+      items: [
+        { id: 'go-cdm', title: 'Go CDM' },
+        { id: 'audit-cdm', title: 'Audit CDM' }
+      ]
+    }
+  ];
+
+  protected sideMenuVersion = '1.0';
+  protected sideMenuAction1Icon = 'help-circle';
+  protected sideMenuAction2Icon = 'settings';
+  protected sideMenuAction3Icon = 'log-out';
+
+  protected onSharedSideMenuItemSelected(itemId: string): void {
+    console.log('Shared side menu item selected:', itemId);
+    if (itemId === 'home') {
+      this.navigateToHome();
+    } else if (itemId === 'as-needed') {
+      this.navigateToAsNeeded();
+    }
+  }
+
+  protected onSideMenuAction1Click(): void {
+    console.log('Side menu action 1 clicked');
+  }
+
+  protected onSideMenuAction2Click(): void {
+    console.log('Side menu action 2 clicked');
+  }
+
+  protected onSideMenuAction3Click(): void {
+    console.log('Side menu action 3 clicked (logout)');
+    this.navigateToLogin();
+  }
+
   protected showUpdatesForm(): void {
     this.showUpdatesPopup.set(true);
   }
@@ -877,139 +940,6 @@ export class App implements AfterViewInit, OnDestroy {
     this.smicSelectedId = id;
   }
 
-  // ── SIDE MENU DEMO ────────────────────────────────────────────────────────
-  protected sideMenuEntries: SideMenuEntry[] = [
-    {
-      id: 'home', title: 'Home', icon: 'home', type: 'collection',
-      items: [
-        {
-          id: 'dashboard', title: 'Dashboard', children: [
-            { id: 'overview', title: 'Overview' },
-            { id: 'analytics', title: 'Analytics' },
-            { id: 'reports', title: 'Reports' },
-          ]
-        },
-        {
-          id: 'settings', title: 'Settings', children: [
-            { id: 'general', title: 'General' },
-            { id: 'security', title: 'Security' },
-          ]
-        },
-        { id: 'users', title: 'Users' },
-      ]
-    },
-    { id: 'profile', title: 'Profile', icon: 'user', type: 'item' },
-    {
-      id: 'reports', title: 'Reports', icon: 'file', type: 'collection',
-      items: [
-        { id: 'monthly', title: 'Monthly' },
-        { id: 'annual', title: 'Annual' },
-        { id: 'quarterly', title: 'Quarterly' },
-        { id: 'custom-reports', title: 'Custom Reports' },
-      ]
-    },
-    {
-      id: 'projects', title: 'Projects', icon: 'briefcase', type: 'collection',
-      items: [
-        {
-          id: 'active', title: 'Active Projects', children: [
-            { id: 'project-a', title: 'Project Alpha' },
-            { id: 'project-b', title: 'Project Beta' },
-            { id: 'project-c', title: 'Project Gamma' },
-          ]
-        },
-        {
-          id: 'archived', title: 'Archived', children: [
-            { id: 'archived-1', title: '2024 Projects' },
-            { id: 'archived-2', title: '2023 Projects' },
-          ]
-        },
-        { id: 'create-project', title: 'Create New' },
-      ]
-    },
-    {
-      id: 'team', title: 'Team', icon: 'users', type: 'collection',
-      items: [
-        { id: 'members', title: 'Members' },
-        { id: 'roles', title: 'Roles & Permissions' },
-        { id: 'invitations', title: 'Invitations' },
-        { id: 'activity', title: 'Activity Log' },
-      ]
-    },
-    { id: 'messages', title: 'Messages', icon: 'message-circle', type: 'item' },
-    { id: 'notifications', title: 'Notifications', icon: 'bell', type: 'item' },
-    { id: 'calendar', title: 'Calendar', icon: 'calendar', type: 'item' },
-    {
-      id: 'analytics', title: 'Analytics', icon: 'bar-chart-2', type: 'collection',
-      items: [
-        {
-          id: 'sales-analytics', title: 'Sales', children: [
-            { id: 'revenue', title: 'Revenue' },
-            { id: 'conversion', title: 'Conversion' },
-            { id: 'funnel', title: 'Funnel' },
-          ]
-        },
-        {
-          id: 'traffic-analytics', title: 'Traffic', children: [
-            { id: 'sources', title: 'Sources' },
-            { id: 'pages', title: 'Top Pages' },
-          ]
-        },
-        { id: 'real-time', title: 'Real-time' },
-      ]
-    },
-    {
-      id: 'finance', title: 'Finance', icon: 'money', type: 'collection',
-      items: [
-        { id: 'invoices', title: 'Invoices' },
-        { id: 'payments', title: 'Payments' },
-        { id: 'expenses', title: 'Expenses' },
-        { id: 'tax', title: 'Tax Reports' },
-      ]
-    },
-    {
-      id: 'inventory', title: 'Inventory', icon: 'package', type: 'collection',
-      items: [
-        { id: 'products', title: 'Products' },
-        { id: 'stock', title: 'Stock Levels' },
-        { id: 'suppliers', title: 'Suppliers' },
-      ]
-    },
-    { id: 'orders', title: 'Orders', icon: 'shopping-cart', type: 'item' },
-    { id: 'customers', title: 'Customers', icon: 'user-check', type: 'item' },
-    {
-      id: 'integrations', title: 'Integrations', icon: 'link', type: 'collection',
-      items: [
-        { id: 'api', title: 'API Keys' },
-        { id: 'webhooks', title: 'Webhooks' },
-        { id: 'third-party', title: 'Third-party Apps' },
-      ]
-    },
-    {
-      id: 'settings-menu', title: 'Settings', icon: 'settings', type: 'collection',
-      items: [
-        {
-          id: 'account-settings', title: 'Account', children: [
-            { id: 'profile-settings', title: 'Profile' },
-            { id: 'password', title: 'Password' },
-            { id: 'two-factor', title: 'Two-Factor Auth' },
-          ]
-        },
-        {
-          id: 'workspace', title: 'Workspace', children: [
-            { id: 'general-ws', title: 'General' },
-            { id: 'branding', title: 'Branding' },
-            { id: 'preferences', title: 'Preferences' },
-          ]
-        },
-        { id: 'billing', title: 'Billing' },
-        { id: 'data-export', title: 'Data Export' },
-      ]
-    },
-    { id: 'help', title: 'Help & Support', icon: 'help-circle', type: 'item' },
-    { id: 'feedback', title: 'Feedback', icon: 'message-square', type: 'item' },
-    { id: 'logout', title: 'Logout', icon: 'log-out', type: 'item' },
-  ];
 
   // ── DATE-TIME SELECTION STATES DEMO ──────────────────────────────────────
   protected readonly dtStates: { state: DateTimeSelectionState; label: string }[] = [
