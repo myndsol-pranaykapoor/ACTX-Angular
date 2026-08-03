@@ -135,10 +135,9 @@ export class AsNeededScreen {
 
   // Tab Bar Configuration for As Needed Reports
   asNeededTabItems: TabBarItem[] = [
-    { label: 'All Reports' },
-    { label: 'Generated' },
-    { label: 'Pending' },
-    { label: 'Archived' },
+    { label: 'Registrations & Licenses' },
+    { label: 'Completed Activity' },
+    { label: 'All' },
   ];
 
   get currentMonthDateRange(): string {
