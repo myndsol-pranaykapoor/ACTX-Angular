@@ -171,39 +171,8 @@ pds-semantic-popup .pds-popup__container {
   gap: 12px;                  /* Spacing/6 */
 }
 
-/* Section-header main-row ordering for tab-bar integration */
-/* Order: icon-title(0), tab-bar(1), spacer-1(2), button-4(3), button-3(4), spacer-2(5), button-2(6), button-1(7) */
-pds-section-header .pds-section-header__main-row .pds-section-header__icon-title {
-  order: 0;
-}
-
+/* Tab Bar styling inside section-header main-row with space-between layout */
 pds-section-header .pds-section-header__main-row pds-tab-bar[section-header-actions] {
-  order: 1;
   flex: 0 1 auto;
   min-width: 0;
-  max-width: 70%;
-}
-
-pds-section-header .pds-section-header__main-row .pds-section-header__spacer {
-  order: 2;
-}
-
-pds-section-header .pds-section-header__main-row pds-button {
-  order: 3;
-}
-
-pds-section-header .pds-section-header__main-row pds-button:nth-of-type(1) {
-  order: 3;
-}
-
-pds-section-header .pds-section-header__main-row pds-button:nth-of-type(2) {
-  order: 4;
-}
-
-pds-section-header .pds-section-header__main-row pds-button:nth-of-type(3) {
-  order: 6;
-}
-
-pds-section-header .pds-section-header__main-row pds-button:nth-of-type(4) {
-  order: 7;
 }
