@@ -19,6 +19,7 @@ import { TabBarComponent, TabBarItem } from '../tab-bar/tab-bar.component';
   encapsulation: ViewEncapsulation.None,
 })
 export class AsNeededScreen {
+  @Output() back = new EventEmitter<void>();
   @Output() navigateToLogin = new EventEmitter<void>();
   @Output() navigateToHome = new EventEmitter<void>();
 
@@ -244,6 +245,10 @@ export class AsNeededScreen {
 
   onAsNeededTabChange(event: any) {
     console.log('As Needed tab changed to:', event);
+  }
+
+  onBackClick() {
+    this.back.emit();
   }
 
   onCommandBarPrimaryClick() {

@@ -11,10 +11,10 @@
 <!-- Command Bar — fixed below web-header -->
 <pds-command-bar
   title="Home"
+  (back)="onBackClick()"
   [showSecondary]="true"
   secondaryLabel="Filter"
   secondaryIcon="filter"
-  [showPrimary]="false"
   (secondaryClick)="onCommandBarSecondaryClick()"
 ></pds-command-bar>
 

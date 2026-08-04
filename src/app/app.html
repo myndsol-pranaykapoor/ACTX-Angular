@@ -20,6 +20,7 @@
   ></pds-web-login-screen>
 } @else if (currentScreen() === 'home') {
   <pds-home-screen
+    (back)="navigateToSelectModule()"
     (navigateToLogin)="navigateToLogin()"
     (navigateToAsNeeded)="navigateToAsNeeded()"
     (showUpdatesPopup)="showUpdatesForm()"
@@ -38,6 +39,7 @@
   ></pds-minimum-wages-screen>
 } @else if (currentScreen() === 'as-needed') {
   <pds-as-needed-screen
+    (back)="navigateToHome()"
     (navigateToLogin)="navigateToLogin()"
     (navigateToHome)="navigateToHome()"
   ></pds-as-needed-screen>

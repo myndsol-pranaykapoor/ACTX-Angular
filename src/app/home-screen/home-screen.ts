@@ -18,6 +18,7 @@ import { TableComponent, TableHeaderColumn, DataRowTabConfig } from '../table/ta
   encapsulation: ViewEncapsulation.None,
 })
 export class HomeScreen {
+  @Output() back = new EventEmitter<void>();
   @Output() navigateToLogin = new EventEmitter<void>();
   @Output() navigateToAsNeeded = new EventEmitter<void>();
   @Output() showUpdatesPopup = new EventEmitter<void>();
@@ -309,6 +310,10 @@ export class HomeScreen {
     this.navigateDirection.set('right');
     this.currentUpdateIndex.update(index => (index - 1 + this.complianceUpdates.length) % this.complianceUpdates.length);
     this.pauseAndResumeAutoRotate();
+  }
+
+  onBackClick() {
+    this.back.emit();
   }
 
   onCommandBarPrimaryClick() {
