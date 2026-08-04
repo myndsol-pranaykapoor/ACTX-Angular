@@ -78,6 +78,9 @@ export class App implements AfterViewInit, OnDestroy {
   /** Selected menu item ID signal — tracks which side-menu item is currently selected */
   protected selectedMenuItemId = signal<string>('home');
 
+  /** Selected menu collection ID signal — tracks which collection is currently selected */
+  protected selectedMenuCollectionId = signal<string>('');
+
   /** Popup state signals — shared across all screens */
   protected showUpdatesPopup = signal(false);
   protected showSuccessPopup = signal(false);
@@ -86,6 +89,7 @@ export class App implements AfterViewInit, OnDestroy {
     this.previousScreen.set(this.currentScreen());
     this.currentScreen.set('home');
     this.selectedMenuItemId.set('home');
+    this.selectedMenuCollectionId.set('');
   }
 
   protected navigateToSelectModule(): void {
@@ -107,16 +111,19 @@ export class App implements AfterViewInit, OnDestroy {
     this.previousScreen.set(this.currentScreen());
     this.currentScreen.set('as-needed');
     this.selectedMenuItemId.set('as-needed');
+    this.selectedMenuCollectionId.set('reports');
   }
 
   protected navigateBack(): void {
     const newScreen = this.previousScreen();
     this.currentScreen.set(newScreen);
-    // Update selected menu item based on the screen we're navigating back to
+    // Update selected menu item and collection based on the screen we're navigating back to
     if (newScreen === 'home') {
       this.selectedMenuItemId.set('home');
+      this.selectedMenuCollectionId.set('');
     } else if (newScreen === 'as-needed') {
       this.selectedMenuItemId.set('as-needed');
+      this.selectedMenuCollectionId.set('reports');
     }
   }
 

@@ -37,6 +37,11 @@ export class SideMenuComponent {
     this.selectedItemId = value;
   }
 
+  /** Externally controlled selected collection ID */
+  @Input() set selectedCollectionIdInput(value: string) {
+    this.selectedCollectionId = value;
+  }
+
   @Output() itemSelected = new EventEmitter<string>();
   @Output() action1Click = new EventEmitter<void>();
   @Output() action2Click = new EventEmitter<void>();
