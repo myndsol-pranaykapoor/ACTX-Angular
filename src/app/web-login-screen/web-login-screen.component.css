@@ -19,7 +19,7 @@
   height: 100%;
   border-radius: var(--radius-6);
   padding: var(--spacing-6);
-  background-color: #BDCEFF;
+  background: linear-gradient(to bottom right, #BDCEFF, #FAC7D8);
   display: flex;
   flex-direction: column;
   align-items: center;
