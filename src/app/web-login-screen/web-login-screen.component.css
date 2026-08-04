@@ -19,7 +19,7 @@
   height: 100%;
   border-radius: var(--radius-6);
   padding: var(--spacing-6);
-  background-color: #B0E6CE;
+  background-color: #BDCEFF;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -124,7 +124,7 @@
 .pds-horizontal-stroke {
   width: 100%;
   height: 6px;
-  background-color: #54C895;
+  background-color: #7096FF;
   border-radius: 3px;
   flex-shrink: 0;
 }
