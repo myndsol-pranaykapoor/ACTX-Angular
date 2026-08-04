@@ -39,7 +39,9 @@
   height: 100%;                    /* below the 42px padding */
   overflow: hidden;                /* clip children width during transition */
 
-  background-color: #ffffff;       /* Grey/0 — the visible sidebar surface */
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   border-right: 1px solid #e4e4e4; /* Grey/3 — right only */
   box-shadow: none;
   transition: box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);

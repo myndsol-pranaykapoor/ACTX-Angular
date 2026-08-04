@@ -20,7 +20,9 @@
   padding: 6px 12px;               /* Spacing/3 top/bottom · Spacing/6 left/right */
   box-sizing: border-box;
 
-  background-color: #ffffff;       /* Grey/0 */
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   border-bottom: 1px solid #e4e4e4; /* 1px · Grey/3 · bottom only */
   pointer-events: all;             /* re-enable clicks inside container */
 }

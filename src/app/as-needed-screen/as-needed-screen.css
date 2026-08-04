@@ -59,7 +59,9 @@ pds-command-bar {
   flex-direction: column;
   gap: 12px;          /* Spacing/6 */
   padding: 12px;      /* Spacing/6 */
-  background: #ffffff;                /* Grey/0 */
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   border: 1px solid #e4e4e4;          /* Grey/3 */
   border-radius: 12px;                /* Radius/6 */
   min-width: 0;       /* Allow flex item to shrink below content intrinsic width */
@@ -122,7 +124,7 @@ pds-web-footer {
   flex-direction: column;
   gap: 12px;
   padding: 12px;
-  background: #fcfcfc;
+  background: #ffffff;
   border: 1px solid #e8e8e8;
   border-radius: 8px;
   height: auto;

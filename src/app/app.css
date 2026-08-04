@@ -259,6 +259,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 12px;                   /* Spacing/6 */
+  background: #ffffff;
 }
 
 /* ── Type title (Primary / Secondary / Tertiary) ── */

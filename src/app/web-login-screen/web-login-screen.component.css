@@ -151,7 +151,9 @@
   width: 360px;
   padding: var(--spacing-6);
   gap: var(--spacing-6);
-  background-color: var(--pds-grey-0);
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   border: 1px solid var(--pds-grey-3);
   border-radius: var(--radius-6);
   box-shadow: var(--elevation-3);
@@ -162,7 +164,7 @@
   flex-direction: column;
   gap: var(--spacing-6);
   padding: var(--spacing-6);
-  background-color: var(--pds-grey-0);
+  background: #ffffff;
   border: 1px solid var(--pds-grey-3);
   border-radius: var(--radius-4);
 }

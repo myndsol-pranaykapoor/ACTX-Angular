@@ -98,7 +98,9 @@ pds-command-bar {
   flex-direction: column;
   gap: 12px;          /* Spacing/6 */
   padding: 12px;      /* Spacing/6 */
-  background: #ffffff;                /* Grey/0 */
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   border: 1px solid #e4e4e4;          /* Grey/3 */
   border-radius: 12px;                /* Radius/6 */
   min-width: 0;       /* Allow flex item to shrink below content intrinsic width */
@@ -115,7 +117,7 @@ pds-command-bar {
   flex-direction: column;
   gap: 12px;          /* Spacing/6 */
   padding: 12px;      /* Spacing/6 */
-  background: #fcfcfc;                /* Grey/1 */
+  background: #ffffff;
   border: 1px solid #e8e8e8;
   border-radius: 8px;
   min-width: 0;
@@ -239,9 +241,9 @@ pds-section-header {
   margin: 0 auto;
 }
 
-/* Remove background fill from play-area while keeping border */
+/* Play-area with grey/0 background */
 .play-area {
-  background-color: transparent !important;
+  background-color: #ffffff !important;
 }
 
 .pds-section-row .pds-section:first-child .pds-section-header__icon-title {

@@ -71,7 +71,9 @@ pds-command-bar {
   flex-direction: column;
   gap: 12px;          /* Spacing/6 */
   padding: 12px;      /* Spacing/6 */
-  background: #ffffff;                /* Grey/0 */
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   border: 1px solid #e4e4e4;          /* Grey/3 */
   border-radius: 12px;                /* Radius/6 */
   min-width: 0;       /* Allow flex item to shrink below content intrinsic width */
@@ -127,15 +129,15 @@ pds-web-footer {
   flex-direction: column;
   gap: 12px;          /* Spacing/6 */
   padding: 12px;      /* Spacing/6 */
-  background: #fcfcfc;                /* Grey/1 */
+  background: #ffffff;
   border: 1px solid #e8e8e8;
   border-radius: 8px;
   min-width: 0;
 }
 
-/* Remove background fill from play-area while keeping border */
+/* Play-area with grey/0 background */
 .play-area {
-  background-color: transparent !important;
+  background-color: #ffffff !important;
 }
 
 /* Play area illustration styling */
@@ -262,16 +264,16 @@ pds-section-header {
 }
 
 .state rect {
-  fill: #e8f4f8;
-  stroke: #2c5282;
+  fill: #F4F7FF !important;
+  stroke: #2962FF !important;
   stroke-width: 1;
   cursor: pointer;
   transition: all 0.3s ease;
 }
 
 .state rect:hover {
-  fill: #b3d9ff;
-  stroke: #1a365d;
+  fill: #BDCEFF !important;
+  stroke: #1D46B5 !important;
   stroke-width: 2;
 }
 
@@ -294,11 +296,11 @@ pds-section-header {
 svg.india-map-svg path {
   cursor: pointer;
   transition: fill 0.2s ease;
-  fill: #D4F1E7;
+  fill: #F4F7FF !important;
 }
 
 svg.india-map-svg path:hover {
-  fill: #54C895;
+  fill: #BDCEFF !important;
 }
 
 .map-object {
