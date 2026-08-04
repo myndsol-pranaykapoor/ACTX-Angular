@@ -3,6 +3,6 @@
 <path d="M17.3333 8H4" stroke="#263B74" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"/>
 <path d="M12.8889 18.667H4" stroke="#263B74" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"/>
 <path d="M9.18519 24H4" stroke="#263B74" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M24 8L24 24" stroke="#00AD61" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M28 20L24 24L20 20" stroke="#00AD61" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M24 8L24 24" stroke="#2962FF" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M28 20L24 24L20 20" stroke="#2962FF" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>

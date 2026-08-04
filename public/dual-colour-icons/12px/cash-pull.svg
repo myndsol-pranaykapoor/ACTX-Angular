@@ -3,6 +3,6 @@
 <rect x="5" y="6" width="2" height="2" rx="1" stroke="#263B74"/>
 <rect x="8" y="6.5" width="1" height="1" rx="0.5" fill="#263B74"/>
 <rect x="3" y="6.5" width="1" height="1" rx="0.5" fill="#263B74"/>
-<path d="M4.5 2.5L6 4L7.5 2.5" stroke="#00AD61" stroke-linecap="round"/>
-<path d="M6 4V1.5" stroke="#00AD61" stroke-linecap="round"/>
+<path d="M4.5 2.5L6 4L7.5 2.5" stroke="#2962FF" stroke-linecap="round"/>
+<path d="M6 4V1.5" stroke="#2962FF" stroke-linecap="round"/>
 </svg>

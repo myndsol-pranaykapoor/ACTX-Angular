@@ -3,6 +3,6 @@
 <rect x="13.3334" y="16" width="5.33333" height="5.33333" rx="2.66667" stroke="#263B74" stroke-width="2.25"/>
 <rect x="21.3334" y="17.333" width="2.66667" height="2.66667" rx="1.33333" fill="#263B74"/>
 <rect x="8" y="17.333" width="2.66667" height="2.66667" rx="1.33333" fill="#263B74"/>
-<path d="M12 6.66699L16 10.667L20 6.66699" stroke="#00AD61" stroke-width="2.25" stroke-linecap="round"/>
-<path d="M16 10.6667V4" stroke="#00AD61" stroke-width="2.25" stroke-linecap="round"/>
+<path d="M12 6.66699L16 10.667L20 6.66699" stroke="#2962FF" stroke-width="2.25" stroke-linecap="round"/>
+<path d="M16 10.6667V4" stroke="#2962FF" stroke-width="2.25" stroke-linecap="round"/>
 </svg>
