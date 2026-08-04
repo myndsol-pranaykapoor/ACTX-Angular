@@ -72,28 +72,40 @@ export class App implements AfterViewInit, OnDestroy {
   /** Current screen signal — 'login', 'home', 'select-module', 'minimum-wages', or 'as-needed' */
   protected currentScreen = signal<'login' | 'home' | 'select-module' | 'minimum-wages' | 'as-needed'>('login');
 
+  /** Previous screen signal — tracks where the user came from for back navigation */
+  protected previousScreen = signal<'login' | 'home' | 'select-module' | 'minimum-wages' | 'as-needed'>('login');
+
   /** Popup state signals — shared across all screens */
   protected showUpdatesPopup = signal(false);
   protected showSuccessPopup = signal(false);
 
   protected navigateToHome(): void {
+    this.previousScreen.set(this.currentScreen());
     this.currentScreen.set('home');
   }
 
   protected navigateToSelectModule(): void {
+    this.previousScreen.set(this.currentScreen());
     this.currentScreen.set('select-module');
   }
 
   protected navigateToLogin(): void {
+    this.previousScreen.set(this.currentScreen());
     this.currentScreen.set('login');
   }
 
   protected navigateToMinimumWages(): void {
+    this.previousScreen.set(this.currentScreen());
     this.currentScreen.set('minimum-wages');
   }
 
   protected navigateToAsNeeded(): void {
+    this.previousScreen.set(this.currentScreen());
     this.currentScreen.set('as-needed');
+  }
+
+  protected navigateBack(): void {
+    this.currentScreen.set(this.previousScreen());
   }
 
   // Shared Side Menu Configuration

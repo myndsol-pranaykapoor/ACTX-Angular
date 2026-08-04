@@ -20,26 +20,26 @@
   ></pds-web-login-screen>
 } @else if (currentScreen() === 'home') {
   <pds-home-screen
-    (back)="navigateToSelectModule()"
+    (back)="navigateBack()"
     (navigateToLogin)="navigateToLogin()"
     (navigateToAsNeeded)="navigateToAsNeeded()"
     (showUpdatesPopup)="showUpdatesForm()"
   ></pds-home-screen>
 } @else if (currentScreen() === 'select-module') {
   <pds-select-module-screen
-    (back)="navigateToLogin()"
+    (back)="navigateBack()"
     (navigateToMinimumWages)="navigateToMinimumWages()"
     (showUpdatesPopup)="showUpdatesForm()"
   ></pds-select-module-screen>
 } @else if (currentScreen() === 'minimum-wages') {
   <pds-minimum-wages-screen
-    (back)="navigateToSelectModule()"
+    (back)="navigateBack()"
     (navigateToLogin)="navigateToLogin()"
     (showUpdatesPopup)="showUpdatesForm()"
   ></pds-minimum-wages-screen>
 } @else if (currentScreen() === 'as-needed') {
   <pds-as-needed-screen
-    (back)="navigateToHome()"
+    (back)="navigateBack()"
     (navigateToLogin)="navigateToLogin()"
     (navigateToHome)="navigateToHome()"
   ></pds-as-needed-screen>
