@@ -32,6 +32,11 @@ export class SideMenuComponent {
   @Input() action2Icon = 'settings';
   @Input() action3Icon = 'log-out';
 
+  /** Externally controlled selected item ID */
+  @Input() set selectedItemIdInput(value: string) {
+    this.selectedItemId = value;
+  }
+
   @Output() itemSelected = new EventEmitter<string>();
   @Output() action1Click = new EventEmitter<void>();
   @Output() action2Click = new EventEmitter<void>();

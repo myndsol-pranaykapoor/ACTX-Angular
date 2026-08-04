@@ -75,6 +75,9 @@ export class App implements AfterViewInit, OnDestroy {
   /** Previous screen signal — tracks where the user came from for back navigation */
   protected previousScreen = signal<'login' | 'home' | 'select-module' | 'minimum-wages' | 'as-needed'>('login');
 
+  /** Selected menu item ID signal — tracks which side-menu item is currently selected */
+  protected selectedMenuItemId = signal<string>('home');
+
   /** Popup state signals — shared across all screens */
   protected showUpdatesPopup = signal(false);
   protected showSuccessPopup = signal(false);
@@ -82,6 +85,7 @@ export class App implements AfterViewInit, OnDestroy {
   protected navigateToHome(): void {
     this.previousScreen.set(this.currentScreen());
     this.currentScreen.set('home');
+    this.selectedMenuItemId.set('home');
   }
 
   protected navigateToSelectModule(): void {
@@ -102,10 +106,18 @@ export class App implements AfterViewInit, OnDestroy {
   protected navigateToAsNeeded(): void {
     this.previousScreen.set(this.currentScreen());
     this.currentScreen.set('as-needed');
+    this.selectedMenuItemId.set('as-needed');
   }
 
   protected navigateBack(): void {
-    this.currentScreen.set(this.previousScreen());
+    const newScreen = this.previousScreen();
+    this.currentScreen.set(newScreen);
+    // Update selected menu item based on the screen we're navigating back to
+    if (newScreen === 'home') {
+      this.selectedMenuItemId.set('home');
+    } else if (newScreen === 'as-needed') {
+      this.selectedMenuItemId.set('as-needed');
+    }
   }
 
   // Shared Side Menu Configuration
