@@ -11,12 +11,12 @@
 :root,
 [data-pds-theme="act"] {
   /* ACT Primary Colours */
-  --pds-primary-0: #f6fcf9;
-  --pds-primary-1: #b0e6ce;
-  --pds-primary-2: #54c895;
-  --pds-primary-3: #00ad61;
-  --pds-primary-4: #007b45;
-  --pds-primary-5: #004929;
+  --pds-primary-0: #F4F7FF;
+  --pds-primary-1: #BDCEFF;
+  --pds-primary-2: #7096FF;
+  --pds-primary-3: #2962FF;
+  --pds-primary-4: #1D46B5;
+  --pds-primary-5: #11296B;
 
   /* Grey Scale */
   --pds-grey-0: #ffffff;
